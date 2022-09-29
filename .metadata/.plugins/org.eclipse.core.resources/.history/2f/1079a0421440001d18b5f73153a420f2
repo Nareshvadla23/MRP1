@@ -1,0 +1,55 @@
+package com.member.registration.service;
+
+import java.time.LocalDate;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.member.registration.dao.MemberRepo;
+import com.member.registration.entity.Member;
+
+@ExtendWith(MockitoExtension.class)
+class MemberServiceTest {
+	
+	@Mock
+	private MemberRepo memberRepo;
+	
+	@InjectMocks
+	private MemberService service;
+	
+	public static Member member() {
+		Member member = new Member();
+		member.setId(1L);
+		member.setAddress("Hyderabad");
+		member.setCity("Hyderabad");
+		member.setContactNo(909900909L);
+		member.setDob(LocalDate.now());
+		member.setEmailAdress("naresh@gmail.com");
+		member.setName("naresh");
+		member.setPan("ASLSLDDK3A");
+		member.setState("telangana");
+		member.setMemberId("R-123");
+		return member;
+
+	}
+
+
+	@Test
+	void testAddMember() {
+		
+	}
+
+	@Test
+	void testGetMemberByName() {
+		
+	}
+
+	@Test
+	void testUpdateMemberDetails() {
+		
+	}
+
+}

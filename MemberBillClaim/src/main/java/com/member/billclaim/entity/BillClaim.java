@@ -1,0 +1,25 @@
+package com.member.billclaim.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+@Entity
+public class BillClaim {
+
+	@Id
+	private Integer id;
+	private String name;
+	private LocalDate dob;
+	private LocalDate dateofAdmission;
+	private LocalDate dateofDischarge;
+	private String providerName;
+	private Long billAmount;
+
+}
