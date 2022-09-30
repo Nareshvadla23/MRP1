@@ -15,6 +15,9 @@ import com.member.billclaim.advice.MemberNotFoundException;
 import com.member.billclaim.entity.BillClaim;
 import com.member.billclaim.entity.Member;
 import com.member.billclaim.service.BillClaimService;
+import com.member.billclaim.util.FeignService;
+
+import org.slf4j.Logger;
 
 @RestController
 @RequestMapping("/member")
@@ -24,19 +27,29 @@ public class ClaimController {
 	RestTemplate template;
 
 	@Autowired
+	FeignService feign;
+
+	@Autowired
 	BillClaimService claimService;
 
+	Logger logger = org.slf4j.LoggerFactory.getLogger(ClaimController.class);
+ 
 	@GetMapping("retrive/name/{name}")
 	public ResponseEntity<Member> getMemberByName(@PathVariable String name) {
-		Member member = template.getForObject("http://localhost:8084/member/retrive/name/" + name, Member.class);
+		logger.info("getMemberByName method Acessed");
+		Member member = feign.getMemberByName(name);
+		logger.info("Exited from getMemberByName method");
 		return new ResponseEntity<Member>(member, HttpStatus.OK);
 
-	}
+	} 
 
 	@PostMapping("/claim")
 	public ResponseEntity<String> billClaim(@RequestBody BillClaim claim) throws MemberNotFoundException {
-		Integer claimId = claimService.submitClaim(claim);
-		return ResponseEntity.ok("Member Details for bill claim added Sucessfully:" + claimId);
-	}
+		logger.info("billClaim method Acessed");
+		BillClaim claimResponse = claimService.submitClaim(claim);
+		logger.info("Exited from billClaim method");
+		return ResponseEntity.ok("Member Details for bill claim added Sucessfully:" + claimResponse.getId());
 
+	}
+ 
 }

@@ -25,7 +25,7 @@ public class ExceptionHandlerController {
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(MemberNotFoundException.class)
-	public Map<String, String> HandleGetException(MemberNotFoundException ex) {
+	public Map<String, String> handleMemberNotFoundException(MemberNotFoundException ex) {
 		Map<String, String> error = new HashMap<String, String>();
 		error.put("errorMessage", ex.getMessage());
 		return error;

@@ -14,7 +14,7 @@ import lombok.Setter;
 public class BillClaim {
 
 	@Id
-	private Integer id;
+	private Integer id; 
 	private String name;
 	private LocalDate dob;
 	private LocalDate dateofAdmission;

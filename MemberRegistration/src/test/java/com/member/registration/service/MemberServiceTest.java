@@ -1,6 +1,7 @@
 package com.member.registration.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import com.member.registration.advice.MemberAlreadyExistException;
 import com.member.registration.advice.MemberNotFoundException;
 import com.member.registration.dao.MemberRepo;
 import com.member.registration.entity.Member;
@@ -41,12 +43,23 @@ class MemberServiceTest {
 	}
 
 	@Test
-	void testAddMember() {
+	void testAddMemberPassCondition() throws MemberAlreadyExistException {
 
 		Member member = member();
+		when(memberRepo.findByEmailAdress(member.getEmailAdress())).thenReturn(null);
 		when(memberRepo.save(member)).thenReturn(member);
 		String savedMember = service.addMember(member);
 		assertEquals(member.getMemberId(), savedMember);
+	}
+
+	@Test
+	void testAddMemberFailCondition() throws MemberAlreadyExistException {
+
+		Member member = member();
+		when(memberRepo.findByEmailAdress(member.getEmailAdress())).thenReturn(member);
+		assertThrows(MemberAlreadyExistException.class, () -> service.addMember(member),
+				"This method throws MemberAlreadyExistException");
+
 	}
 
 	@Test
@@ -60,17 +73,25 @@ class MemberServiceTest {
 	@Test
 	void testGetMemberByNameFailCondition() throws MemberNotFoundException {
 		when(memberRepo.findByName("naresh")).thenReturn(null);
-		assertEquals(new MemberNotFoundException("Member Details Not with Name :" + "naresh"),
-				service.getMemberByName("naresh"));
+		assertThrows(MemberNotFoundException.class, () -> service.getMemberByName("naresh"),
+				"This method throws exception");
+
 	}
 
 	@Test
-	void testUpdateMemberDetails() {
+	void testUpdateMemberDetailsPassCondition() throws MemberNotFoundException {
 		Member member = member();
 		when(memberRepo.findByMemberId(member.getMemberId())).thenReturn(member);
 		when(memberRepo.save(member)).thenReturn(member);
 		assertEquals(member, service.updateMemberDetails(member));
 
+	}
+	@Test
+	void testUpdateMemberDetailsFailCondition() throws MemberNotFoundException {
+		Member member = member();
+		when(memberRepo.findByMemberId(member.getMemberId())).thenReturn(null);
+		assertThrows(MemberNotFoundException.class, () -> service.updateMemberDetails(member),
+				"This method throws exception");
 	}
 
 }
