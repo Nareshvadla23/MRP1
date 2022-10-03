@@ -10,21 +10,19 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.member.registration.service.MemberService;
-
 @RestControllerAdvice
 public class ExceptionHandlerController {
 	
-	Logger logger = org.slf4j.LoggerFactory.getLogger(MemberService.class);
+	Logger logger = org.slf4j.LoggerFactory.getLogger(ExceptionHandlerController.class);
  
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public Map<String, String> handlingException(MethodArgumentNotValidException exception) {
 		logger.info("MethodArgumentNotValidException method Acessed");
-		Map<String, String> error = new HashMap<String, String>();
-		exception.getBindingResult().getFieldErrors().forEach(err -> {
-			error.put(err.getField(), err.getDefaultMessage()); 
-		});
+		Map<String, String> error = new HashMap<>();
+		exception.getBindingResult().getFieldErrors().forEach(err -> 
+			error.put(err.getField(), err.getDefaultMessage())
+		);
 		return error;
 	}
 
@@ -32,7 +30,7 @@ public class ExceptionHandlerController {
 	@ExceptionHandler(MemberNotFoundException.class)
 	public Map<String, String> handleMemberNotFoundException(MemberNotFoundException ex) {
 		logger.info("MemberNotFoundException method Acessed");
-		Map<String, String> error = new HashMap<String, String>();
+		Map<String, String> error = new HashMap<>();
 		error.put("errorMessage", ex.getMessage());
 		return error;
 	} 
@@ -41,7 +39,7 @@ public class ExceptionHandlerController {
 	@ExceptionHandler(MemberAlreadyExistException.class)
 	public Map<String, String> handleMemberAlreadyExistException(MemberAlreadyExistException ex) {
 		logger.info("MemberAlreadyExistException method Acessed");
-		Map<String, String> error = new HashMap<String, String>();
+		Map<String, String> error = new HashMap<>();
 		error.put("errorMessage", ex.getMessage());
 		return error;
 

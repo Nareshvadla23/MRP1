@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.member.registration.advice.MemberAlreadyExistException;
 import com.member.registration.advice.MemberNotFoundException;
+import com.member.registration.dto.MemberDto;
 import com.member.registration.entity.Member;
 import com.member.registration.service.MemberService;
 
@@ -28,12 +29,13 @@ public class MemberController {
 	private MemberService memberService;
 
 	@PostMapping("/register")
-	public ResponseEntity<String> saveMember(@RequestBody @Valid Member member) throws MemberAlreadyExistException {
+	public ResponseEntity<String> saveMember(@RequestBody @Valid MemberDto memberDto)
+			throws MemberAlreadyExistException {
 		logger.info("SaveMemberMethod Acessed");
-		String memberId = memberService.addMember(member);
+		Member member = memberService.addMember(memberDto);
 		logger.info("Exited from SaveMemberMethod");
-		return ResponseEntity.ok("Member Details Added Sucessfully:" + memberId);
-	} 
+		return ResponseEntity.ok("Member Details Added Sucessfully:" + member.getMemberId());
+	}
 
 	@GetMapping("retrive/name/{name}")
 	public Member getMemberByName(@PathVariable String name) throws MemberNotFoundException {
@@ -44,9 +46,9 @@ public class MemberController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<String> updateMember(@RequestBody @Valid Member member) throws MemberNotFoundException {
+	public ResponseEntity<String> updateMember(@RequestBody @Valid MemberDto memberDto) throws MemberNotFoundException {
 		logger.info("updateMember method Acessed");
-		Member updatedMember = memberService.updateMemberDetails(member);
+		Member updatedMember = memberService.updateMemberDetails(memberDto);
 		logger.info("Exited from updateMember method");
 		return ResponseEntity.ok("Member Details Updated Sucessfully:" + updatedMember);
 	}

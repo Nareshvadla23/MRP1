@@ -1,6 +1,6 @@
 package com.member.billclaim.advice;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.Map;
 
@@ -16,7 +16,7 @@ class ExceptionHandlerControllerTest {
 	ExceptionHandlerController exceptionHandlerController;
 
 	@Test
-	void testHandlingException() {
+	void testHandlingException() { 
 
 	}
 
@@ -24,6 +24,13 @@ class ExceptionHandlerControllerTest {
 	void testHandleMemberNotFoundException() {
 		MemberNotFoundException exception = new MemberNotFoundException("Member Not Found");
 		Map<String, String> error = exceptionHandlerController.handleMemberNotFoundException(exception);
+		assertEquals("Member Not Found", error.get("errorMessage"));
+	}
+	
+	@Test
+	void testHandleBillAlreadyClaimmedException() {
+		BillAlreadyClaimmedException exception = new BillAlreadyClaimmedException("Member Not Found");
+		Map<String, String> error = exceptionHandlerController.handleBillAlreadyClaimmedException(exception);
 		assertEquals("Member Not Found", error.get("errorMessage"));
 	}
 

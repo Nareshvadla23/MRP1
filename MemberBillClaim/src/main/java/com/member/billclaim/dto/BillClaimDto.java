@@ -1,20 +1,14 @@
-package com.member.billclaim.entity;
+package com.member.billclaim.dto;
 
 import java.time.LocalDate;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
 @Setter
-@Entity
-public class BillClaim {
+@Getter
+public class BillClaimDto {
 
-	@Id
-	private Integer id;
 	private String name;
 	private LocalDate dob;
 	private LocalDate dateofAdmission;

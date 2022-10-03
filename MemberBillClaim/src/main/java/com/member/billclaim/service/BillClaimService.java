@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.member.billclaim.advice.BillAlreadyClaimmedException;
 import com.member.billclaim.advice.MemberNotFoundException;
 import com.member.billclaim.dao.MemberBillClaimRepo;
+import com.member.billclaim.dto.BillClaimDto;
 import com.member.billclaim.entity.BillClaim;
 import com.member.billclaim.entity.Member;
 import com.member.billclaim.util.FeignService;
@@ -23,23 +25,50 @@ public class BillClaimService {
 	RestTemplate template;
 
 	@Autowired
-	FeignService feign;
+	 FeignService feign;
 
 	Logger logger = org.slf4j.LoggerFactory.getLogger(BillClaimService.class);
+	static Random random = new Random(System.currentTimeMillis());
 
-	public BillClaim submitClaim(BillClaim claim) throws MemberNotFoundException {
+	public Member getMemberByName(String name) throws MemberNotFoundException {
+		logger.info("GetMemberByName method Acessed");
+		Member member = feign.getMemberByName(name);
+		if (member != null) { 
+			return member; 
+		} else {
+			throw new MemberNotFoundException("Member details not found with Name :" + name);
+		}
+	}
 
+	public BillClaim submitClaim(BillClaimDto claim) throws MemberNotFoundException, BillAlreadyClaimmedException {
 		logger.info("SubmitClaim method Acessed");
 		Member member = feign.getMemberByName(claim.getName());
-
 		if (member != null) {
-			Random random = new Random(System.currentTimeMillis());
-			Integer Value = (int) (random.nextInt(2000000000) + 1000000000 + member.getId());
-			claim.setId(Math.abs(Value));
-			BillClaim billClaim = memberBillClaimRepo.save(claim);
-			return billClaim;
+			BillClaim billClaimResponse = memberBillClaimRepo.findByName(claim.getName());
+			if (billClaimResponse == null) {
+				BillClaim billClaim = billClaim(claim);
+				return memberBillClaimRepo.save(billClaim);
+			} else {
+				throw new BillAlreadyClaimmedException(
+						"Member Already Calimed There Bills with claimId:" + billClaimResponse.getId());
+			}
 		} else {
 			throw new MemberNotFoundException("Member details not found with Name :" + claim.getName());
 		}
+	}
+
+	public static BillClaim billClaim(BillClaimDto bilClaimDto) {
+		BillClaim billClaim = new BillClaim();
+	
+		Integer value = (int) (random.nextInt(2000000000) + 1000000000 );
+		billClaim.setId(Math.abs(value));
+		billClaim.setDob(bilClaimDto.getDob());
+		billClaim.setName(bilClaimDto.getName());
+		billClaim.setDateofAdmission(bilClaimDto.getDateofAdmission());
+		billClaim.setDateofDischarge(bilClaimDto.getDateofDischarge());
+		billClaim.setBillAmount(bilClaimDto.getBillAmount());
+		billClaim.setProviderName(bilClaimDto.getProviderName());
+		return billClaim;
+
 	}
 }

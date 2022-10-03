@@ -8,9 +8,6 @@
     </listAttribute>
     <listAttribute key="org.eclipse.eclemma.core.SCOPE_IDS">
         <listEntry value="=MemberRegistration/src\/main\/resources"/>
-        <listEntry value="=MemberRegistration/src\/test\/java"/>
-        <listEntry value="=MemberRegistration/target\/generated-sources\/annotations"/>
-        <listEntry value="=MemberRegistration/target\/generated-test-sources\/test-annotations"/>
         <listEntry value="=MemberRegistration/src\/main\/java"/>
     </listAttribute>
     <stringAttribute key="org.eclipse.jdt.junit.CONTAINER" value="=MemberRegistration"/>

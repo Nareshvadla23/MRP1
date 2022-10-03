@@ -41,4 +41,6 @@ public class Member {
 	private Long contactNo;
 	@NotNull(message = "DOB should not be empty")
 	private LocalDate dob;
+	
+	
 }

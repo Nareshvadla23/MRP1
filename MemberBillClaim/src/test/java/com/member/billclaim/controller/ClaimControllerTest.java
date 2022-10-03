@@ -13,7 +13,9 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import com.member.billclaim.advice.BillAlreadyClaimmedException;
 import com.member.billclaim.advice.MemberNotFoundException;
+import com.member.billclaim.dto.BillClaimDto;
 import com.member.billclaim.entity.BillClaim;
 import com.member.billclaim.entity.Member;
 import com.member.billclaim.service.BillClaimService;
@@ -31,21 +33,6 @@ class ClaimControllerTest {
 	@InjectMocks
 	ClaimController controller;
 
-	public static Member member() {
-		Member member = new Member();
-		member.setId(1L);
-		member.setAddress("Hyderabad");
-		member.setCity("Hyderabad");
-		member.setContactNo(909900909L);
-		member.setDob(LocalDate.now());
-		member.setEmailAdress("naresh@gmail.com");
-		member.setName("naresh");
-		member.setPan("ASLSLDDK3A");
-		member.setState("telangana");
-		member.setMemberId("R-123");
-		return member;
-	}
-
 	public static BillClaim billClaim() {
 		BillClaim billClaim = new BillClaim();
 		billClaim.setBillAmount(2000L);
@@ -57,21 +44,30 @@ class ClaimControllerTest {
 		billClaim.setProviderName("sai");
 		return billClaim;
 	}
-
-	@Test
-	void testGetMemberByName() {
-		Member member = member();
-		when(feign.getMemberByName("naresh")).thenReturn(member);
+	
+	public static BillClaimDto billClaimDto() {
+		BillClaimDto billClaimDto = new BillClaimDto();
+		billClaimDto.setBillAmount(2000L);
+		billClaimDto.setDateofAdmission(LocalDate.now());
+		billClaimDto.setDateofDischarge(LocalDate.now());
+		billClaimDto.setDob(LocalDate.now());
+		billClaimDto.setName("naresh");
+		billClaimDto.setProviderName("sai");
+		return billClaimDto;
+	}
+ 
+	@Test 
+	void testGetMemberByName() throws MemberNotFoundException {
 		ResponseEntity<Member> responseMember = controller.getMemberByName("naresh");
 		assertEquals(HttpStatus.OK, responseMember.getStatusCode());
 	}
 
 	@Test
-	void testBillClaim() throws MemberNotFoundException { 
+	void testBillClaim() throws MemberNotFoundException, BillAlreadyClaimmedException {
 		BillClaim billClaim = billClaim();
-		Member member = member();
-		when(claimService.submitClaim(billClaim)).thenReturn(billClaim);
-		ResponseEntity<String> response = controller.billClaim(billClaim);
+		BillClaimDto billClaimDto = billClaimDto();
+		when(claimService.submitClaim(billClaimDto)).thenReturn(billClaim);
+		ResponseEntity<String> response = controller.billClaim(billClaimDto);
 		assertEquals(HttpStatus.OK, response.getStatusCode());
 
 	}

@@ -14,22 +14,28 @@ public class ExceptionHandlerController {
 
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public Map<String, String> HandlingException(MethodArgumentNotValidException exception) {
-
-		Map<String, String> error = new HashMap<String, String>();
-		exception.getBindingResult().getFieldErrors().forEach(err -> {
-			error.put(err.getField(), err.getDefaultMessage());
-		});
+	public Map<String, String> handlingException(MethodArgumentNotValidException exception) {
+		Map<String, String> error = new HashMap<>();
+		exception.getBindingResult().getFieldErrors().forEach(err -> 
+			error.put(err.getField(), err.getDefaultMessage())
+		);
 		return error;
 	}
 
 	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
 	@ExceptionHandler(MemberNotFoundException.class)
 	public Map<String, String> handleMemberNotFoundException(MemberNotFoundException ex) {
-		Map<String, String> error = new HashMap<String, String>();
+		Map<String, String> error = new HashMap<>();
 		error.put("errorMessage", ex.getMessage());
 		return error;
-
+	}
+	
+	@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+	@ExceptionHandler(BillAlreadyClaimmedException.class)
+	public Map<String, String> handleBillAlreadyClaimmedException(BillAlreadyClaimmedException ex) {
+		Map<String, String> error = new HashMap<>();
+		error.put("errorMessage", ex.getMessage());
+		return error;
 	}
 
 }
