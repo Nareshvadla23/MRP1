@@ -26,6 +26,38 @@
     color: white;
   }
 
+  .container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+  
+ 
+  
+  /* Centered text */
+  .centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bottom-right {
+    position: absolute;
+    bottom: 8px;
+    right: 16px;
+  }
+
+  .home img
+{
+    width: 100%;
+    height: 555px;
+    object-position: center;
+    object-fit: cover;
+}
+
+  
+
+
  
 
 

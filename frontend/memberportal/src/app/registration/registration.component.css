@@ -29,9 +29,9 @@ hr {
 
 /* Set a style for the submit/register button */
 .registerbtn {
-  background-color: #04AA6D;
+  background-color: #096946;
   color: white;
-  padding: 16px 20px;
+  padding: 10px 10px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
@@ -59,20 +59,40 @@ div
 }
 form {
     height: 100%;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 10px;
+    border: #04AA6D;
   }
   .flex
 {
   display: flex;
-  flex-basis: 100px;
 }
-.CL
+.row
 {
-    align-items: center;
-  width: 200px;
+  align-items: center;
+  display: flex;
 }
 .IC
 {
-  width: 2000px;
+  display: flex;
+  width:200px;
+  padding-right: 5px;
+}
+.col-1
+{
+  display: flex;
+  align-items: flex-end;
+  text-align: end;
+  width:149px;
+}
+.col-5
+{
+  display: flex;
+  align-items: flex-end;
+  width:350px;
+}
+.RC
+{
+  align-items: center;
+  text-align: center;
 }
