@@ -1,0 +1,57 @@
+package com.member.registration.advice;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.beans.PropertyEditor;
+import java.util.List;
+import java.util.Map;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.PropertyEditorRegistry;
+import org.springframework.boot.context.properties.bind.BindResult;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
+
+@ExtendWith(MockitoExtension.class)
+class ExceptionHandlerControllerTest {
+
+	@InjectMocks
+	ExceptionHandlerController exceptionHandlerController;
+	
+	private final BindingResult bindingResult1;
+	
+	public final BindingResult getBindingResult() {
+		return this.bindingResult1;
+	}
+
+
+	@Test
+	void testHandlingException() {
+		
+		
+		BindingResult bindingResult = getBindingResult();
+
+	}
+
+	@Test
+	void testHandleMemberNotFoundException() {
+		MemberNotFoundException exception = new MemberNotFoundException("Member Not Found");
+		Map<String, String> error = exceptionHandlerController.handleMemberNotFoundException(exception);
+		assertEquals("Member Not Found", error.get("errorMessage"));
+	}
+
+	@Test
+	void testHandleMemberAlreadyExistException() {
+
+		MemberAlreadyExistException exception = new MemberAlreadyExistException("Member Already registered");
+		Map<String, String> error = exceptionHandlerController.handleMemberAlreadyExistException(exception);
+		assertEquals("Member Already registered", error.get("errorMessage"));
+
+	}
+
+}

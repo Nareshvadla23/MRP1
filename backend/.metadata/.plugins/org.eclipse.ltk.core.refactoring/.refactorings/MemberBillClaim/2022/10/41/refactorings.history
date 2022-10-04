@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;com.member.registration.dto&apos; to &apos;com.member.billclaim.dto&apos;&#x0D;&#x0A;- Original project: &apos;MemberBillClaim&apos;&#x0D;&#x0A;- Original element: &apos;MemberBillClaim/src/main/java/com.member.registration.dto&apos;&#x0D;&#x0A;- Renamed element: &apos;MemberBillClaim/src/main/java/com.member.billclaim.dto&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;com.member.registration.dto&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java&lt;com.member.registration.dto" name="com.member.billclaim.dto" qualified="false" references="true" stamp="1664773534568" textual="false" version="1.0"/>
+</session>

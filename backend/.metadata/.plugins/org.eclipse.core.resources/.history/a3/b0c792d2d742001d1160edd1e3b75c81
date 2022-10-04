@@ -1,0 +1,5 @@
+package com.member.registration.dto;
+
+public class MemberDto {
+
+}

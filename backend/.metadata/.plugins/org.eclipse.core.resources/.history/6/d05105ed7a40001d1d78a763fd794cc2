@@ -1,0 +1,5 @@
+package com.member.registration.advice;
+
+public class MemberAlreadyExistException extends Exception {
+
+}

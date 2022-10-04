@@ -1,0 +1,24 @@
+package com.member.registration.advice;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ExceptionHandlerControllerTest {
+
+	@Test
+	void testHandlingException() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testHandleGetException() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testHandlePostException() {
+		fail("Not yet implemented");
+	}
+
+}

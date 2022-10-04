@@ -1,0 +1,63 @@
+package com.member.registration.service;
+
+import java.util.Random;
+
+import org.slf4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.member.registration.advice.MemberAlreadyExistException;
+import com.member.registration.advice.MemberNotFoundException;
+import com.member.registration.dao.MemberRepo;
+import com.member.registration.dto.MemberResponseDto;
+import com.member.registration.entity.Member;
+
+@Service
+public class MemberService {
+
+	@Autowired
+	private MemberRepo memberRepo;
+	Logger logger = org.slf4j.LoggerFactory.getLogger(MemberService.class);
+
+	Random random = new Random();
+
+	public String addMember(Member member) throws MemberAlreadyExistException {
+		logger.info("AddMember method Acessed");
+		if (memberRepo.findByEmailAdress(member.getEmailAdress()) == null) {
+			String memberId = "R-" + Math.abs((random.nextInt((999 - 111) + 1) + 111));
+			member.setMemberId(memberId);
+			Member savedMember = memberRepo.save(member);
+			return savedMember.getMemberId();
+		} else {
+			throw new MemberAlreadyExistException("Member MailId Already Exist");
+		}
+	}
+
+	public MemberResponseDto getMemberByName(String name) {
+		logger.info("GetMemberByName method Acessed");
+		Member member = memberRepo.findByName(name);
+		MemberResponseDto response = new MemberResponseDto();
+		if (member != null) {
+			response.setMember(member);
+		} else {
+			response.setMember(member);
+		}
+		return response;
+	}
+
+	public Member updateMemberDetails(Member member) throws MemberNotFoundException {
+		logger.info("UpdateMemberDetails method Acessed");
+		Member responseMember = memberRepo.findByMemberId(member.getMemberId());
+		if (responseMember != null) {
+			Member updateMember = responseMember;
+			updateMember.setEmailAdress(member.getEmailAdress());
+			updateMember.setContactNo(member.getContactNo());
+			updateMember.setAddress(member.getAddress());
+			updateMember.setPan(member.getPan());
+			updateMember.setState(member.getState());
+			return memberRepo.save(updateMember);
+		} else {
+			throw new MemberNotFoundException("Member Details Not found with given MemberId");
+		}
+	}
+}

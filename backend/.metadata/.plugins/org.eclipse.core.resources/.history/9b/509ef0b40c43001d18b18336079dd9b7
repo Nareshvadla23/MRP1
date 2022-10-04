@@ -1,0 +1,33 @@
+package com.member.registration.dto;
+
+import java.time.LocalDate;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.member.registration.entity.Member;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
+public class MemberDto extends Member
+{
+
+	public MemberDto(Long id, String memberId, @NotNull(message = "Name should not be null") String name,
+			@NotNull(message = "Address should not be null") String address,
+			@NotEmpty(message = "State should not be empty") String state,
+			@NotEmpty(message = "City should not be empty") String city,
+			@Email(message = "please enter correct emailAddress") String emailAdress,
+			@Length(max = 12) @NotEmpty(message = "PanNumber should not be empty") String pan,
+			@NotNull(message = "contactNo should not be empty") Long contactNo,
+			@NotNull(message = "DOB should not be empty") LocalDate dob) {
+		super(id, memberId, name, address, state, city, emailAdress, pan, contactNo, dob);
+		// TODO Auto-generated constructor stub
+	}
+
+}

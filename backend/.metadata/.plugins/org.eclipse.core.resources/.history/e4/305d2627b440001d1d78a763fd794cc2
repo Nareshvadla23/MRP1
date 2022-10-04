@@ -1,0 +1,19 @@
+package com.member.billclaim.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class ClaimControllerTest {
+
+	@Test
+	void testGetMemberByName() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	void testBillClaim() {
+		fail("Not yet implemented");
+	}
+
+}
