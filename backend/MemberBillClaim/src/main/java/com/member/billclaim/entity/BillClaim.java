@@ -21,5 +21,6 @@ public class BillClaim {
 	private LocalDate dateofDischarge;
 	private String providerName;
 	private Long billAmount;
+	
 
 }

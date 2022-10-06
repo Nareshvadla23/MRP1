@@ -25,7 +25,7 @@ public class BillClaimService {
 	RestTemplate template;
 
 	@Autowired
-	 FeignService feign;
+	FeignService feign;
 
 	Logger logger = org.slf4j.LoggerFactory.getLogger(BillClaimService.class);
 	static Random random = new Random(System.currentTimeMillis());
@@ -33,16 +33,26 @@ public class BillClaimService {
 	public Member getMemberByName(String name) throws MemberNotFoundException {
 		logger.info("GetMemberByName method Acessed");
 		Member member = feign.getMemberByName(name);
-		if (member != null) { 
-			return member; 
+		if (member != null) {
+			return member;
 		} else {
 			throw new MemberNotFoundException("Member details not found with Name :" + name);
 		}
 	}
 
+	public Member getMemberByMemberId(String memberId) throws MemberNotFoundException {
+		logger.info("GetMemberByName method Acessed");
+		Member member = feign.getMemberByMemberId(memberId);
+		if (member != null) {
+			return member;
+		} else {
+			throw new MemberNotFoundException("Member details not found with Name :" + memberId);
+		}
+	}
+
 	public BillClaim submitClaim(BillClaimDto claim) throws MemberNotFoundException, BillAlreadyClaimmedException {
 		logger.info("SubmitClaim method Acessed");
-		Member member = feign.getMemberByName(claim.getName());
+		Member member = feign.getMemberByMemberId(claim.getMemberId());
 		if (member != null) {
 			BillClaim billClaimResponse = memberBillClaimRepo.findByName(claim.getName());
 			if (billClaimResponse == null) {
@@ -59,8 +69,8 @@ public class BillClaimService {
 
 	public static BillClaim billClaim(BillClaimDto bilClaimDto) {
 		BillClaim billClaim = new BillClaim();
-	
-		Integer value = (int) (random.nextInt(2000000000) + 1000000000 );
+
+		Integer value = (int) (random.nextInt(2000000000) + 1000000000);
 		billClaim.setId(Math.abs(value));
 		billClaim.setDob(bilClaimDto.getDob());
 		billClaim.setName(bilClaimDto.getName());

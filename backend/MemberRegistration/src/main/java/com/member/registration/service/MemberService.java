@@ -31,7 +31,7 @@ public class MemberService {
 		member.setCity(memberDto.getCity());
 		member.setContactNo(memberDto.getContactNo());
 		member.setDob(memberDto.getDob());
-		member.setEmailAdress(memberDto.getEmailAdress());
+		member.setEmailAdress(memberDto.getEmailAddress());
 		member.setName(memberDto.getName());
 		member.setPan(memberDto.getPan());
 		member.setState(memberDto.getState());
@@ -41,7 +41,8 @@ public class MemberService {
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
 		logger.info("AddMember method Acessed");
-		if (memberRepo.findByEmailAdress(memberDto.getEmailAdress()) == null) {
+		System.out.println(memberDto.getEmailAddress());
+		if (memberRepo.findByEmailAdress(memberDto.getEmailAddress()) == null) {
 			Member member = member(memberDto);
 			return memberRepo.save(member);
 		} else {
@@ -51,13 +52,22 @@ public class MemberService {
 
 	public Member getMemberByName(String name) throws MemberNotFoundException {
 		logger.info("GetMemberByName method Acessed");
-		Member member =  memberRepo.findByName(name);
+		Member member = memberRepo.findByName(name);
 		if (member != null) {
 			return member;
 		} else {
 			throw new MemberNotFoundException("Member Details Not found with given Name :" + name);
 		}
-		
+	}
+
+	public Member getMemberByMemberId(String memberId) throws MemberNotFoundException {
+		logger.info("GetMemberByName method Acessed");
+		Member member = memberRepo.findByMemberId(memberId);
+		if (member != null) {
+			return member;
+		} else {
+			throw new MemberNotFoundException("Member Details Not found with given Name :" + memberId);
+		}
 	}
 
 	public Member updateMemberDetails(@Valid MemberDto memberDto) throws MemberNotFoundException {
@@ -65,7 +75,7 @@ public class MemberService {
 		Member responseMember = memberRepo.findByMemberId(memberDto.getMemberId());
 		if (responseMember != null) {
 			Member updateMember = responseMember;
-			updateMember.setEmailAdress(memberDto.getEmailAdress());
+			updateMember.setEmailAdress(memberDto.getEmailAddress());
 			updateMember.setContactNo(memberDto.getContactNo());
 			updateMember.setAddress(memberDto.getAddress());
 			updateMember.setPan(memberDto.getPan());

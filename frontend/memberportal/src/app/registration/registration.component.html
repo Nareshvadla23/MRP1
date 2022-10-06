@@ -1,4 +1,4 @@
-<form action="action_page.php">
+<form>
     <div class="container">
         <h2>Register</h2>
         <p>Please fill in this form to create an account.</p>
@@ -8,13 +8,15 @@
                     <p><b>Name</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Name" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Name" name="name" [(ngModel)]='member.name' id="name" required
+                        class="IC">
                 </div>
                 <div class="col-1">
                     <p><b>MailAddress</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Mail Adress" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Mail Adress" name="emailAddress"
+                        [(ngModel)]='member.emailAddress' id="name" required class="IC">
                 </div>
             </div>
         </div>
@@ -24,13 +26,15 @@
                     <p><b>Date of Birth</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter Date of Birth" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter Date of Birth" name="dob" [(ngModel)]='member.dob' id="name"
+                        required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>Pan Number</b></p>
+                    <p><b>Pan No</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Pan Number" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Pan Number" name="pan" [(ngModel)]='member.pan'
+                        id="name" required class="IC">
                 </div>
             </div>
         </div>
@@ -40,13 +44,15 @@
                     <p><b>Address</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Address" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Address" name="address" [(ngModel)]='member.address' id="name"
+                        required class="IC">
                 </div>
                 <div class="col-1">
                     <p><b>City</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter City" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter City" name="city" [(ngModel)]='member.city' id="name" required
+                        class="IC">
                 </div>
             </div>
         </div>
@@ -56,19 +62,24 @@
                     <p><b>State</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter State" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter State" name="state" [(ngModel)]='member.state' id="name"
+                        required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>Contact Number</b></p>
+                    <p><b>Contact No</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Contact Number" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Contact Number" name="contactNo"
+                        [(ngModel)]='member.contactNo' id="name" required class="IC">
                 </div>
             </div>
         </div>
         <div class="flex">
-            <div class="RC">
-                <button type="submit" class="registerbtn">Register</button>
+            <div class="row">
+                <div class="col-12">
+                    <button (click)='registerMember()' class='btn btn-outline-success'
+                        class="registerbtn">Register</button>
+                </div>
             </div>
         </div>
     </div>

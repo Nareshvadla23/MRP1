@@ -1,18 +1,89 @@
-<!-- A button to open the popup form -->
-<button class="open-button" onclick="openForm()">Open Form</button>
-
-<!-- The form -->
-<div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h1>Login</h1>
-
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
-
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-
-    <button type="submit" class="btn">Login</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
-</div>
+<form action="action_page.php">
+  <div class="container">
+      <h2>Updation</h2>
+      <p>Please fill in this form to update your required Details.</p>
+      <div class="flex">
+        <div class="row">
+            <div class="col-1">
+                <p><b>Member Id</b></p>
+            </div>
+            <div class="col-5">
+                <input type="text" placeholder="Enter State" name="name" id="name" required class="IC">
+            </div>
+            <div class="col-3">
+                <button  class='btn btn-outline-success'>Get Member</button>
+            </div>
+            
+        </div>
+    </div>
+      <div class="flex">
+          <div class="row">
+              <div class="col-1">
+                  <p><b>Name</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter Name" name="name" id="name" required class="IC">
+              </div>
+              <div class="col-1">
+                  <p><b>MailAddress</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter Mail Adress" name="name" id="name" required class="IC">
+              </div>
+          </div>
+      </div>
+      <div class="flex">
+          <div class="row">
+              <div class="col-1">
+                  <p><b>Date of Birth</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="date" placeholder="Enter Date of Birth" name="name" id="name" required class="IC">
+              </div>
+              <div class="col-1">
+                  <p><b>Pan Number</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter Pan Number" name="name" id="name" required class="IC">
+              </div>
+          </div>
+      </div>
+      <div class="flex">
+          <div class="row">
+              <div class="col-1">
+                  <p><b>Address</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter Address" name="name" id="name" required class="IC">
+              </div>
+              <div class="col-1">
+                  <p><b>City</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter City" name="name" id="name" required class="IC">
+              </div>
+          </div>
+      </div>
+      <div class="flex">
+          <div class="row">
+              <div class="col-1">
+                  <p><b>State</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter State" name="name" id="name" required class="IC">
+              </div>
+              <div class="col-1">
+                  <p><b>Contact Number</b></p>
+              </div>
+              <div class="col-5">
+                  <input type="text" placeholder="Enter Contact Number" name="name" id="name" required class="IC">
+              </div>
+          </div>
+      </div>
+      <div class="flex">
+          <div class="RC">
+              <button type="submit" class="registerbtn">Update</button>
+          </div>
+      </div>
+  </div>
+</form>

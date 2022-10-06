@@ -1,7 +1,7 @@
 <form action="action_page.php">
     <div class="container">
-        <h2>Register</h2>
-        <p>Please fill in this form to create an account.</p>
+        <h2>Bill Claim</h2>
+        <p>Please fill in this form to claim bills.</p>
         <div class="flex">
             <div class="row">
                 <div class="col-1">
@@ -11,10 +11,10 @@
                     <input type="text" placeholder="Enter Name" name="name" id="name" required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>MailAddress</b></p>
+                    <p><b>MemberId</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Mail Adress" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Member ID" name="name" id="name" required class="IC">
                 </div>
             </div>
         </div>
@@ -27,23 +27,23 @@
                     <input type="date" placeholder="Enter Date of Birth" name="name" id="name" required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>Pan Number</b></p>
+                    <p><b>Date of Admission</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Pan Number" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter date of Admission" name="name" id="name" required class="IC">
                 </div>
             </div>
         </div>
         <div class="flex">
             <div class="row">
                 <div class="col-1">
-                    <p><b>Address</b></p>
+                    <p><b>Date of Discharge</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Address" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter date of Discharge" name="name" id="name" required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>City</b></p>
+                    <p><b>Provider Name</b></p>
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter City" name="name" id="name" required class="IC">
@@ -53,23 +53,19 @@
         <div class="flex">
             <div class="row">
                 <div class="col-1">
-                    <p><b>State</b></p>
+                    <p><b>billAmount</b></p>
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter State" name="name" id="name" required class="IC">
                 </div>
-                <div class="col-1">
-                    <p><b>Contact Number</b></p>
+                <div class="col-3">
+                    <button type="submit" class="registerbtn">Submit Claim</button>
                 </div>
-                <div class="col-5">
-                    <input type="text" placeholder="Enter Contact Number" name="name" id="name" required class="IC">
-                </div>
+                
             </div>
         </div>
         <div class="flex">
-            <div class="RC">
-                <button type="submit" class="registerbtn">Register</button>
-            </div>
+            
         </div>
     </div>
 </form>

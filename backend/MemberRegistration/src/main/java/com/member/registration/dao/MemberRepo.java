@@ -9,10 +9,9 @@ import com.member.registration.entity.Member;
 public interface MemberRepo extends JpaRepository<Member, Long> {
 
 	public Member findByName(String name);
-	
+
 	public Member findByMemberId(String memberId);
-	
+
 	public Member findByEmailAdress(String emailAdress);
-	
 
 }

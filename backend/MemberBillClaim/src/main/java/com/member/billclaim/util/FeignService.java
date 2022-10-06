@@ -13,6 +13,11 @@ public interface FeignService {
 	
 	@GetMapping("member/retrive/name/{name}")
 	public Member getMemberByName(@PathVariable String name);
+	
+	@GetMapping("member/retrive/memberId/{memberId}")
+	public Member getMemberByMemberId(@PathVariable String memberId);
+	
+	
 
 	
 

@@ -14,9 +14,10 @@ public class MemberDto {
 	private String address;
 	private String state;
 	private String city;
-	private String emailAdress;
+	private String emailAddress;
 	private String pan;
 	private Long contactNo;
 	private LocalDate dob;
 
 }
+ 

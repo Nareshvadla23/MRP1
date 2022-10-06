@@ -44,6 +44,14 @@ public class ClaimController {
 		logger.info("Exited from getMemberByName method"); 
 		return new ResponseEntity<>(member, HttpStatus.OK);
 	}
+	
+	@GetMapping("retrive/memberId/{memberId}")
+	public ResponseEntity<Member> getMemberByMemberId(@PathVariable @Valid String memberId) throws MemberNotFoundException {
+		logger.info("getMemberByName method Acessed");
+		Member member = claimService.getMemberByMemberId(memberId);
+		logger.info("Exited from getMemberByName method"); 
+		return new ResponseEntity<>(member, HttpStatus.OK);
+	}
 
 	@PostMapping("/claim")
 	public ResponseEntity<String> billClaim(@RequestBody @Valid BillClaimDto claim) throws MemberNotFoundException, BillAlreadyClaimmedException {

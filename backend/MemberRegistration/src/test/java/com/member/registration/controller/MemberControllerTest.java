@@ -74,7 +74,7 @@ class MemberControllerTest {
 		membDto.setCity("Hyderabad");
 		membDto.setContactNo(909900909L);
 		membDto.setDob(LocalDate.now());
-		membDto.setEmailAdress("naresh@gmail.com");
+		membDto.setEmailAddress("naresh@gmail.com");
 		membDto.setName("naresh");
 		membDto.setPan("ASLSLDDK3A");
 		membDto.setState("telangana");
