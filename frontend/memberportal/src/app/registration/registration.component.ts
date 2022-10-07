@@ -10,36 +10,60 @@ import { MemberService } from '../memberService.service';
 })
 export class RegistrationComponent implements OnInit {
 
-  member :Member = new Member();
+  member: Member = new Member();
   registerForm = new FormGroup({
-    name: new FormControl("",[Validators.required]),
-    address:new FormControl(""),
-    state:new FormControl(""),
-    country: new FormControl(""),
-    emailAddress:new FormControl(""),
-    pan: new FormControl(""),
-    contactNo: new FormControl(""),
-    dob: new FormControl(""),
+    name: new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z].*")]),
+    address: new FormControl("", [Validators.required]),
+    state: new FormControl("", [Validators.required]),
+    country: new FormControl("", [Validators.required]),
+    emailAddress: new FormControl("", [Validators.required, Validators.email]),
+    pan: new FormControl("", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]),
+    contactNo: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
+    dob: new FormControl("", [Validators.required]),
   })
 
-  constructor(private memberService:MemberService) { }
+  constructor(private memberService: MemberService) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  registerMember()
-  {
-    console.log(this.registerForm.get("name"));
-    //  this.memberService.registerMember(this.member).subscribe(
-    //    data=>{
-    //      alert("registration sucessfull")
-    //    }
-    //  )
+  registerMember() {
+    console.log(this.registerForm.get);
+
+    this.memberService.registerMember(this.registerForm.getRawValue()).subscribe(
+      (data:any) => {
+        alert(data.message)
+      }, (error:any) => {
+        alert(error)
+      }
+
+    )
   }
 
-  get Name():any{
-    return this.registerForm.get("name")?.invalid &&this.registerForm.get("name")?.pristine;
+  get Name(): FormControl {
+    return this.registerForm.get("name") as FormControl;
+  }
+  get Address(): FormControl {
+    return this.registerForm.get("address") as FormControl;
+  }
+  get State(): FormControl {
+    return this.registerForm.get("state") as FormControl;
+  }
+  get Country(): FormControl {
+    return this.registerForm.get("country") as FormControl;
+  }
+  get EmailAddress(): FormControl {
+    return this.registerForm.get("emailAddress") as FormControl;
+  }
+  get Pan(): FormControl {
+    return this.registerForm.get("pan") as FormControl;
+  }
+  get ContactNo(): FormControl {
+    return this.registerForm.get("contactNo") as FormControl;
+  }
+  get Dob(): FormControl {
+    return this.registerForm.get("dob") as FormControl;
   }
 
 }

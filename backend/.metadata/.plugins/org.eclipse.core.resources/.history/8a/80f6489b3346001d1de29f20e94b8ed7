@@ -42,7 +42,7 @@ public class MemberController {
 		Member member = memberService.addMember(memberDto);
 		Map<String, String> response = new HashMap<>();
 		String value = "Member Details Added Sucessfully:" + member.getMemberId();
-		response.put("message", value);
+		response.put("Message", value);
 		logger.info("Exited from SaveMemberMethod");
 		return response;
 	}

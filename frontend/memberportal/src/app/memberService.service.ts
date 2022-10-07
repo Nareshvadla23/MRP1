@@ -13,7 +13,7 @@ export class MemberService {
 
   constructor(public http: HttpClient) { }
 
-  registerMember(member: Member): Observable<object> {
+  registerMember(member: any): Observable<object> {
     return this.http.post(URL1 + "member/register", member);
   }
 }

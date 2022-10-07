@@ -37,12 +37,13 @@ public class MemberController {
 
 	@PostMapping("/register")
 	@ResponseStatus(HttpStatus.OK)
-	public Map<String, String> saveMember(@RequestBody @Valid MemberDto memberDto) throws MemberAlreadyExistException {
+	public Map<String, String> saveMember(@RequestBody @Valid MemberDto memberDto)
+			throws MemberAlreadyExistException {
 		logger.info("SaveMemberMethod Acessed");
 		Member member = memberService.addMember(memberDto);
 		Map<String, String> response = new HashMap<>();
 		String value = "Member Details Added Sucessfully:" + member.getMemberId();
-		response.put("message", value);
+		response.put("Message",value);
 		logger.info("Exited from SaveMemberMethod");
 		return response;
 	}
@@ -54,7 +55,7 @@ public class MemberController {
 		logger.info("Exited from getMemberByName method");
 		return member;
 	}
-
+	
 	@GetMapping("retrive/memberId/{memberId}")
 	public Member getMemberByMemberId(@PathVariable String memberId) throws MemberNotFoundException {
 		logger.info("getMemberByName method Acessed");
