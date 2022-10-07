@@ -3,7 +3,7 @@ export class Member {
     name!: string;
     address!: string;
     state!: string;
-    city!: string;
+    country!: string;
     emailAddress!: string;
     pan!: string;
     contactNo!: number;

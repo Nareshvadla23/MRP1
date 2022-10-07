@@ -110,7 +110,6 @@ INDEX VERSION 1.131+C:\Users\cogjava3163\Desktop\New folder\backend\.metadata\.p
 4254316083.index
 4256962421.index
 1090883180.index
-2748293940.index
 3351131603.index
 30589272.index
 3287364923.index

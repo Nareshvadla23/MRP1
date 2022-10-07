@@ -13,7 +13,7 @@ public class MemberDto {
 	private String name;
 	private String address;
 	private String state;
-	private String country;
+	private String city;
 	private String emailAddress;
 	private String pan;
 	private Long contactNo;

@@ -28,7 +28,7 @@ public class MemberService {
 		String memberId = "R-" + Math.abs((random.nextInt((999 - 111) + 1) + 111));
 		member.setMemberId(memberId);
 		member.setAddress(memberDto.getAddress());
-		member.setCountry(memberDto.getCountry());
+		member.setCity(memberDto.getCity());
 		member.setContactNo(memberDto.getContactNo());
 		member.setDob(memberDto.getDob());
 		member.setEmailAdress(memberDto.getEmailAddress());
@@ -41,6 +41,7 @@ public class MemberService {
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
 		logger.info("AddMember method Acessed");
+		System.out.println(memberDto.getEmailAddress());
 		if (memberRepo.findByEmailAdress(memberDto.getEmailAddress()) == null) {
 			Member member = member(memberDto);
 			return memberRepo.save(member);

@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
      this.memberService.registerMember(this.member).subscribe(
        data=>{
          alert("registration sucessfull")
-       },
+       }
      )
   }
 

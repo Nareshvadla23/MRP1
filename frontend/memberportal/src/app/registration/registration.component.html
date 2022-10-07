@@ -1,4 +1,4 @@
-<form>
+<form >
     <div class="container">
         <h2>Register</h2>
         <p>Please fill in this form to create an account.</p>
@@ -8,8 +8,16 @@
                     <p><b>Name</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Name" name="name" [(ngModel)]='member.name' id="name" required
-                        class="IC">
+                    <div class = "form-group">
+                    <input type="text" placeholder="Enter Name" class = "form-control" required   name="name" [(ngModel)]='member.name' id="name" 
+                       #name = "ngModel">
+                       <div *ngIf = "name.invalid && name.touched" class ="error">
+                               
+                        <div *ngIf ="name.errors?.['required']">
+                            Name is Required
+                        </div>
+                       </div>
+                    </div>
                 </div>
                 <div class="col-1">
                     <p><b>MailAddress</b></p>
@@ -48,10 +56,10 @@
                         required class="IC">
                 </div>
                 <div class="col-1">
-                    <p><b>City</b></p>
+                    <p><b>Country</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter City" name="city" [(ngModel)]='member.city' id="name" required
+                    <input type="text" placeholder="Enter Country" name="country" [(ngModel)]='member.country' id="country" required
                         class="IC">
                 </div>
             </div>
@@ -77,8 +85,7 @@
         <div class="flex">
             <div class="row">
                 <div class="col-12">
-                    <button (click)='registerMember()' class='btn btn-outline-success'
-                        class="registerbtn">Register</button>
+                    <button class="registerbtn" (click)='registerMember()' class='btn btn-outline-success'>Register</button>
                 </div>
             </div>
         </div>

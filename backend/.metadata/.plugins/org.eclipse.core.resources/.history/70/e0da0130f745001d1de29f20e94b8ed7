@@ -1,7 +1,8 @@
-package com.member.billclaim.entity;
+package com.member.registration.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -15,6 +16,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
+@Entity
 public class Member {
 	
 
@@ -28,8 +30,8 @@ public class Member {
 	private String address;
 	@NotEmpty(message = "State should not be empty")
 	private String state;
-	@NotEmpty(message = "country should not be empty")
-	private String country;
+	@NotEmpty(message = "City should not be empty")
+	private String city;
 	@Email(message = "please enter correct emailAddress")
 	private String emailAdress;
 	@Length(max = 12)
@@ -41,8 +43,4 @@ public class Member {
 	private LocalDate dob;
 	
 	
-	
-	
-	
-
 }

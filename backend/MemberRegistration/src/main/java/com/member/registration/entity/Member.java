@@ -30,8 +30,8 @@ public class Member {
 	private String address;
 	@NotEmpty(message = "State should not be empty")
 	private String state;
-	@NotEmpty(message = "City should not be empty")
-	private String city;
+	@NotEmpty(message = "Country should not be empty")
+	private String country;
 	@Email(message = "please enter correct emailAddress")
 	private String emailAdress;
 	@Length(max = 12)

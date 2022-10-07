@@ -31,7 +31,7 @@ class MemberServiceTest {
 		Member member = new Member();
 		member.setId(1L);
 		member.setAddress("Hyderabad");
-		member.setCountry("Hyderabad");
+		member.setCity("Hyderabad");
 		member.setContactNo(909900909L);
 		member.setDob(LocalDate.now());
 		member.setEmailAdress("naresh@gmail.com");
@@ -95,7 +95,7 @@ class MemberServiceTest {
 	public static MemberDto memberDto() {
 		MemberDto membDto = new MemberDto();
 		membDto.setAddress("Hyderabad");
-		membDto.setCountry("Hyderabad");
+		membDto.setCity("Hyderabad");
 		membDto.setContactNo(909900909L);
 		membDto.setDob(LocalDate.now());
 		membDto.setEmailAddress("naresh@gmail.com");

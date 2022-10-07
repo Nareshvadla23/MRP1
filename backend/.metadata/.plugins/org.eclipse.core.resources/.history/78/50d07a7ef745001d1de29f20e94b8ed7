@@ -37,7 +37,7 @@ class BillClaimServiceTest {
 		Member member = new Member();
 		member.setId(1L);
 		member.setAddress("Hyderabad");
-		member.setCountry("Hyderabad");
+		member.setCity("Hyderabad");
 		member.setContactNo(909900909L);
 		member.setDob(LocalDate.now());
 		member.setEmailAdress("naresh@gmail.com");
