@@ -4282,3 +4282,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.springfra
 2022-10-07 09:51:44,155 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
 2022-10-07 09:51:44,157 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2022-10-07 09:51:44,157 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered properties files.
+2022-10-07 09:51:44,157 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\cogjava3163\Desktop\New folder\backend\MemberRegistration\src\test\resources
