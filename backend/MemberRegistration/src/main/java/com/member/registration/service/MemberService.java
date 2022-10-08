@@ -31,7 +31,7 @@ public class MemberService {
 		member.setCountry(memberDto.getCountry());
 		member.setContactNo(memberDto.getContactNo());
 		member.setDob(memberDto.getDob());
-		member.setEmailAdress(memberDto.getEmailAddress());
+		member.setEmailAddress(memberDto.getEmailAddress());
 		member.setName(memberDto.getName());
 		member.setPan(memberDto.getPan());
 		member.setState(memberDto.getState());
@@ -41,7 +41,7 @@ public class MemberService {
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
 		logger.info("AddMember method Acessed");
-		if (memberRepo.findByEmailAdress(memberDto.getEmailAddress()) == null) {
+		if (memberRepo.findByEmailAddress(memberDto.getEmailAddress()) == null) {
 			Member member = member(memberDto);
 			return memberRepo.save(member);
 		} else {
@@ -74,7 +74,7 @@ public class MemberService {
 		Member responseMember = memberRepo.findByMemberId(memberDto.getMemberId());
 		if (responseMember != null) {
 			Member updateMember = responseMember;
-			updateMember.setEmailAdress(memberDto.getEmailAddress());
+			updateMember.setEmailAddress(memberDto.getEmailAddress());
 			updateMember.setContactNo(memberDto.getContactNo());
 			updateMember.setAddress(memberDto.getAddress());
 			updateMember.setPan(memberDto.getPan());

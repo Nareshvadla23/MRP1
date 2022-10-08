@@ -64,11 +64,15 @@ public class MemberController {
 	}
 
 	@PutMapping("/update")
-	public ResponseEntity<String> updateMember(@RequestBody @Valid MemberDto memberDto) throws MemberNotFoundException {
+	@ResponseStatus(HttpStatus.OK)
+	public Map<String, String> updateMember(@RequestBody @Valid MemberDto memberDto) throws MemberNotFoundException {
 		logger.info("updateMember method Acessed");
+		Map<String, String> response = new HashMap<>();
 		Member updatedMember = memberService.updateMemberDetails(memberDto);
+		String value = "Member Details Updated Sucessfully:" + updatedMember.getMemberId();
+		response.put("message", value);
 		logger.info("Exited from updateMember method");
-		return ResponseEntity.ok("Member Details Updated Sucessfully:" + updatedMember);
+		return response;
 	}
 
 }

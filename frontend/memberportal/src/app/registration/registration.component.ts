@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Member } from '../member';
 import { MemberService } from '../memberService.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -22,7 +23,7 @@ export class RegistrationComponent implements OnInit {
     dob: new FormControl("", [Validators.required]),
   })
 
-  constructor(private memberService: MemberService) { }
+  constructor(private memberService: MemberService,private router: Router) { }
 
   ngOnInit(): void {
 
@@ -34,6 +35,7 @@ export class RegistrationComponent implements OnInit {
     this.memberService.registerMember(this.registerForm.getRawValue()).subscribe(
       (data:any) => {
         alert(data.message)
+        this.router.navigate(['/home'])
       }, (error:any) => {
         alert(error)
       }

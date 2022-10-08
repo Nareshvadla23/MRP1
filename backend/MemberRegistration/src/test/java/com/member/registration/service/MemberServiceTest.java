@@ -34,7 +34,7 @@ class MemberServiceTest {
 		member.setCountry("Hyderabad");
 		member.setContactNo(909900909L);
 		member.setDob(LocalDate.now());
-		member.setEmailAdress("naresh@gmail.com");
+		member.setEmailAddress("naresh@gmail.com");
 		member.setName("naresh");
 		member.setPan("ASLSLDDK3A");
 		member.setState("telangana");
@@ -47,7 +47,7 @@ class MemberServiceTest {
 
 		Member member = member();
 		MemberDto memberDto = memberDto();
-		when(memberRepo.findByEmailAdress(member.getEmailAdress())).thenReturn(null);
+		when(memberRepo.findByEmailAdress(member.getEmailAddress())).thenReturn(null);
 		when(memberRepo.save(member)).thenReturn(member);
 		Member savedMember = service.addMember(memberDto);
 		assertEquals(member, savedMember); 
@@ -58,7 +58,7 @@ class MemberServiceTest {
 
 		Member member = member();
 		MemberDto memberDto = memberDto();
-		when(memberRepo.findByEmailAdress(member.getEmailAdress())).thenReturn(member);
+		when(memberRepo.findByEmailAdress(member.getEmailAddress())).thenReturn(member);
 		assertThrows(MemberAlreadyExistException.class, () -> service.addMember(memberDto),
 				"This method throws MemberAlreadyExistException");
 

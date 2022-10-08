@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +33,7 @@ class MemberControllerTest {
 		Member member = member();
 		MemberDto memberDto = memberDto();
 		when(service.addMember(memberDto)).thenReturn(member);
-		ResponseEntity<String> response = controller.saveMember(memberDto);
+		Map<String, String> response = controller.saveMember(memberDto);
 		assertEquals(ResponseEntity.ok("Member Details Added Sucessfully:" + member.getMemberId()), response);
 	}
 
@@ -60,7 +61,7 @@ class MemberControllerTest {
 		member.setCountry("Hyderabad");
 		member.setContactNo(909900909L);
 		member.setDob(LocalDate.now());
-		member.setEmailAdress("naresh@gmail.com");
+		member.setEmailAddress("naresh@gmail.com");
 		member.setName("naresh");
 		member.setPan("ASLSLDDK3A");
 		member.setState("telangana");

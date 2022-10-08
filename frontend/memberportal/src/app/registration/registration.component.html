@@ -9,7 +9,8 @@
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter Name" class="form-control" formControlName="name" id="name">
-                    <div class="form-text text-danger" *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+                    <div class="form-text text-danger"
+                        *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
                         *Required
                     </div>
                     <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
@@ -22,10 +23,12 @@
                 <div class="col-5">
                     <input type="text" placeholder="Enter Mail Adress" name="emailAddress"
                         formControlName="emailAddress" id="emailAddress">
-                    <div class="form-text text-danger" *ngIf="EmailAddress.errors?.['required'] && (EmailAddress.touched||EmailAddress.dirty)">
+                    <div class="form-text text-danger"
+                        *ngIf="EmailAddress.errors?.['required'] && (EmailAddress.touched||EmailAddress.dirty)">
                         *Required
                     </div>
-                    <div class="form-text text-danger" *ngIf="EmailAddress.errors?.['email'] && (EmailAddress.touched||EmailAddress.dirty)">
+                    <div class="form-text text-danger"
+                        *ngIf="EmailAddress.errors?.['email'] && (EmailAddress.touched||EmailAddress.dirty)">
                         *Email is Invalid
                     </div>
                 </div>
@@ -115,7 +118,8 @@
         <div class="flex">
             <div class="row">
                 <div class="col-12">
-                    <button type="submit"[disabled]= "registerForm.invalid"class='btn btn-outline-success'>Register</button>
+                    <button type="submit" [disabled]="registerForm.invalid"
+                        class='btn btn-outline-success'>Register</button>
                 </div>
             </div>
         </div>
