@@ -34,7 +34,7 @@ class MemberControllerTest {
 		MemberDto memberDto = memberDto();
 		when(service.addMember(memberDto)).thenReturn(member);
 		Map<String, String> response = controller.saveMember(memberDto);
-		assertEquals(ResponseEntity.ok("Member Details Added Sucessfully:" + member.getMemberId()), response);
+		assertEquals("Member Details Added Sucessfully:" + member.getMemberId(), response.get("message"));
 	}
 
 	@Test
@@ -44,14 +44,22 @@ class MemberControllerTest {
 		Member response = controller.getMemberByName(member.getName());
 		assertEquals(member, response);
 	}
+	
+	@Test
+	void testGetMemberByMemberId() throws MemberNotFoundException {
+		Member member = member();
+		when(service.getMemberByName(member.getMemberId())).thenReturn(member);
+		Member response = controller.getMemberByMemberId(member.getMemberId());
+		assertEquals(member.getCountry(), response.getCountry());
+	}
 
 	@Test
 	void testUpdateMember() throws MemberNotFoundException {
 		Member member = member();
 		MemberDto memberDto = memberDto();
 		when(service.updateMemberDetails(memberDto)).thenReturn(member);
-		ResponseEntity<String> response = controller.updateMember(memberDto);
-		assertEquals(ResponseEntity.ok("Member Details Updated Sucessfully:" + member), response);
+		Map<String, String> response = controller.updateMember(memberDto);
+		assertEquals("Member Details Updated Sucessfully:" + member.getMemberId(), response.get("message"));
 	}
 	
 	public static Member member() {

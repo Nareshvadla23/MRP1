@@ -47,7 +47,7 @@ class MemberServiceTest {
 
 		Member member = member();
 		MemberDto memberDto = memberDto();
-		when(memberRepo.findByEmailAdress(member.getEmailAddress())).thenReturn(null);
+		when(memberRepo.findByEmailAddress(member.getEmailAddress())).thenReturn(null);
 		when(memberRepo.save(member)).thenReturn(member);
 		Member savedMember = service.addMember(memberDto);
 		assertEquals(member, savedMember); 
@@ -58,7 +58,7 @@ class MemberServiceTest {
 
 		Member member = member();
 		MemberDto memberDto = memberDto();
-		when(memberRepo.findByEmailAdress(member.getEmailAddress())).thenReturn(member);
+		when(memberRepo.findByEmailAddress(member.getEmailAddress())).thenReturn(member);
 		assertThrows(MemberAlreadyExistException.class, () -> service.addMember(memberDto),
 				"This method throws MemberAlreadyExistException");
 

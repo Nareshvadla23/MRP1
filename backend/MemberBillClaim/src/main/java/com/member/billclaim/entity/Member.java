@@ -31,7 +31,7 @@ public class Member {
 	@NotEmpty(message = "country should not be empty")
 	private String country;
 	@Email(message = "please enter correct emailAddress")
-	private String emailAdress;
+	private String emailAddress;
 	@Length(max = 12)
 	@NotEmpty(message = "PanNumber should not be empty")
 	private String pan;

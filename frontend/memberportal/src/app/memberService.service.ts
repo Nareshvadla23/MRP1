@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Member } from './member';
 
-const URL = "CLAIMPORTAL/"
+const URL = "http://localhost:8090/"
 const URL1 = "http://localhost:8084/"
 
 @Injectable({
@@ -15,6 +15,10 @@ export class MemberService {
 
   registerMember(member: any): Observable<object> {
     return this.http.post(URL1 + "member/register", member);
+  }
+
+  billClaim(claim: any): Observable<object> {
+    return this.http.post(URL + "member/claim", claim);
   }
 
   updateMember(member: any): Observable<object> {

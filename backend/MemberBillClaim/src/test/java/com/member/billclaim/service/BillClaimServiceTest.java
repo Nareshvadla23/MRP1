@@ -16,7 +16,6 @@ import com.member.billclaim.advice.BillAlreadyClaimmedException;
 import com.member.billclaim.advice.MemberNotFoundException;
 import com.member.billclaim.dao.MemberBillClaimRepo;
 import com.member.billclaim.dto.BillClaimDto;
-import com.member.billclaim.dto.MemberDto;
 import com.member.billclaim.entity.BillClaim;
 import com.member.billclaim.entity.Member;
 import com.member.billclaim.util.FeignService;
@@ -40,7 +39,7 @@ class BillClaimServiceTest {
 		member.setCountry("Hyderabad");
 		member.setContactNo(909900909L);
 		member.setDob(LocalDate.now());
-		member.setEmailAdress("naresh@gmail.com");
+		member.setEmailAddress("naresh@gmail.com");
 		member.setName("naresh");
 		member.setPan("ASLSLDDK3A");
 		member.setState("telangana");

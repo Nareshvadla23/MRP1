@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDate;
+import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -60,15 +61,21 @@ class ClaimControllerTest {
 	void testGetMemberByName() throws MemberNotFoundException {
 		ResponseEntity<Member> responseMember = controller.getMemberByName("naresh");
 		assertEquals(HttpStatus.OK, responseMember.getStatusCode());
-	}
+	} 
+	
+	@Test 
+	void testGetMemberByMemberId() throws MemberNotFoundException {
+		ResponseEntity<Member> responseMember = controller.getMemberByMemberId("R-233");
+		assertEquals(HttpStatus.OK, responseMember.getStatusCode());
+	} 
 
 	@Test
 	void testBillClaim() throws MemberNotFoundException, BillAlreadyClaimmedException {
 		BillClaim billClaim = billClaim();
 		BillClaimDto billClaimDto = billClaimDto();
 		when(claimService.submitClaim(billClaimDto)).thenReturn(billClaim);
-		ResponseEntity<String> response = controller.billClaim(billClaimDto);
-		assertEquals(HttpStatus.OK, response.getStatusCode());
+		Map<String, String> response = controller.billClaim(billClaimDto);
+		assertEquals("Member Details for bill claim added Sucessfully:" + billClaim.getId(), response.get("message"));
 
 	}
 

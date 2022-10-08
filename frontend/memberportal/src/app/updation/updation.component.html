@@ -1,6 +1,6 @@
 <form [formGroup]="registerForm" (ngSubmit)="updateMember()">
   <div class="container">
-      <h2>Updation</h2>
+      <h2>UPDATION</h2>
       <p>Please fill in this form to update your required Details.</p>
       <div class="flex">
         <div class="row">
@@ -54,7 +54,7 @@
                 <p><b>Date of Birth</b></p>
             </div>
             <div class="col-5">
-                <input type="date" placeholder="Enter Date of Birth" [readonly]="true" formControlName="dob" id="name">
+                <input type="date" placeholder="Enter Date of Birth" [readonly]="true" formControlName="dob" id="dob">
                 <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && Dob.touched">
                     *Required
                 </div>

@@ -5,4 +5,5 @@ export class Claim {
     dateofDischarge!: Date;
     dateofAdmission!: Date;
     dob!: Date;
+    billAmount!:number;
 }

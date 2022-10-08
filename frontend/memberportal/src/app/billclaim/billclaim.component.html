@@ -1,6 +1,6 @@
-<form action="action_page.php">
+<form [formGroup]="claimForm" (ngSubmit)='submitClaim()'>
     <div class="container">
-        <h2>Bill Claim</h2>
+        <h2>BILL CLAIM</h2>
         <p>Please fill in this form to claim bills.</p>
         <div class="flex">
             <div class="row">
@@ -8,13 +8,29 @@
                     <p><b>Name</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Name" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Name" class="form-control" formControlName="name" id="name">
+                    <div class="form-text text-danger"
+                        *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
+                        *Name should be Alphabets
+                    </div>
                 </div>
                 <div class="col-1">
                     <p><b>MemberId</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Member ID" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter Member ID" class="form-control" formControlName="memberId"
+                        id="memberId">
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['required'] && (MemberId.touched || MemberId.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['maxlength'] && (MemberId.touched || MemberId.dirty)">
+                        *MemberId is too long
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,13 +40,21 @@
                     <p><b>Date of Birth</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter Date of Birth" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter Date of Birth" class="form-control" formControlName="dob"
+                        id="dob">
+                    <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && (Dob.touched || Dob.dirty)">
+                        *Required
+                    </div>
                 </div>
                 <div class="col-1">
                     <p><b>Date of Admission</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter date of Admission" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter date of Admission" class="form-control"
+                        formControlName="dateofAdmission" id="dateofAdmission">
+                        <div class="form-text text-danger" *ngIf="DateofAdmission.errors?.['required'] && (DateofAdmission.touched || DateofAdmission.dirty)">
+                            *Required
+                        </div>
                 </div>
             </div>
         </div>
@@ -40,13 +64,26 @@
                     <p><b>Date of Discharge</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter date of Discharge" name="name" id="name" required class="IC">
+                    <input type="date" placeholder="Enter date of Discharge" class="form-control" formControlName="dateofDischarge"
+                        id="dateofDischarge">
+                        <div class="form-text text-danger" *ngIf="DateofDischarge.errors?.['required'] && (DateofDischarge.touched || DateofDischarge.dirty)">
+                            *Required
+                        </div>
                 </div>
                 <div class="col-1">
                     <p><b>Provider Name</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter City" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter provider Name" class="form-control"
+                        formControlName="providerName" id="providerName">
+                    <div class="form-text text-danger"
+                        *ngIf="ProviderName.errors?.['required'] && (ProviderName.touched || ProviderName.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="ProviderName.errors?.['pattern'] && (ProviderName.touched || ProviderName.dirty)">
+                        *Name should be Alphabets
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,16 +93,22 @@
                     <p><b>billAmount</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter State" name="name" id="name" required class="IC">
+                    <input type="text" placeholder="Enter State" class="form-control" formControlName="billAmount"
+                        id="billAmount">
+                    <div class="form-text text-danger"
+                        *ngIf="BillAmount.errors?.['required'] && (BillAmount.touched || BillAmount.dirty)">
+                        *Required
+                    </div>
                 </div>
                 <div class="col-3">
-                    <button type="submit" class="registerbtn">Submit Claim</button>
+                    <button type="submit" [disabled]="claimForm.invalid"
+                        class='btn btn-outline-success'>Submit Claim</button>
                 </div>
-                
+
             </div>
         </div>
-        <div class="flex">
-            
-        </div>
+
+
+
     </div>
 </form>

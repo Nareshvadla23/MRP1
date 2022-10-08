@@ -8,5 +8,5 @@ import com.member.billclaim.entity.BillClaim;
 public interface MemberBillClaimRepo extends JpaRepository<BillClaim, Long> {
 
 	public BillClaim findByName(String name);
-
+	
 }
