@@ -41,7 +41,6 @@ public class MemberService {
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
 		logger.info("AddMember method Acessed");
-
 		if (memberRepo.findByEmailAddress(memberDto.getEmailAddress()) == null) {
 			Member member = member(memberDto);
 			return memberRepo.save(member);

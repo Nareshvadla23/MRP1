@@ -48,8 +48,7 @@ export class UpdationComponent implements OnInit {
      console.log(this.registerForm.get("memberId"))
       }
     , (error: any) => {
-      alert("Please provide correct memberId")
-      console.log(error);
+      alert(error.error.errorMessage)
     }
     );
   }

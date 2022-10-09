@@ -14,8 +14,8 @@ export class BillclaimComponent implements OnInit {
     name: new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z].*")]),
     providerName: new FormControl("", [Validators.required]),
     memberId: new FormControl("", [Validators.required,Validators.maxLength(5)]),
-    dateofDischarge: new FormControl("", [Validators.required]),
     dateofAdmission: new FormControl("", [Validators.required]),
+    dateofDischarge: new FormControl("", [Validators.required]),
     dob: new FormControl("", [Validators.required]),
     billAmount: new FormControl("", [Validators.required]),
   })
@@ -32,7 +32,7 @@ export class BillclaimComponent implements OnInit {
         alert(data.message)
         this.router.navigate(['/home'])
       }, (error:any) => {
-        alert(error)
+        alert(error.error.errorMessage)
       }
 
     )

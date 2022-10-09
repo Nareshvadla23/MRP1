@@ -11,8 +11,16 @@ import { Router } from '@angular/router';
 })
 export class RegistrationComponent implements OnInit {
 
+  today : any = new Date();
+  validDate: any = new Date(
+  this.today.getFullYear()-18,
+  this.today.getMonth(),
+  this.today.getDay(),
+  this.today.getHours(),
+  );
   member: Member = new Member();
-  registerForm = new FormGroup({
+  
+   registerForm = new FormGroup({
     name: new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z].*")]),
     address: new FormControl("", [Validators.required]),
     state: new FormControl("", [Validators.required]),
@@ -20,7 +28,7 @@ export class RegistrationComponent implements OnInit {
     emailAddress: new FormControl("", [Validators.required, Validators.email]),
     pan: new FormControl("", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]),
     contactNo: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
-    dob: new FormControl("", [Validators.required]),
+    dob: new FormControl("", [Validators.required,]),
   })
 
   constructor(private memberService: MemberService,private router: Router) { }
@@ -37,7 +45,7 @@ export class RegistrationComponent implements OnInit {
         alert(data.message)
         this.router.navigate(['/home'])
       }, (error:any) => {
-        alert(error)
+        alert(error.error.errorMessage)
       }
 
     )

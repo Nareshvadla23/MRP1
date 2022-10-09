@@ -41,11 +41,13 @@ public class MemberService {
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
 		logger.info("AddMember method Acessed");
-
+		System.out.println(memberRepo.findByEmailAddress(memberDto.getEmailAddress()));
 		if (memberRepo.findByEmailAddress(memberDto.getEmailAddress()) == null) {
+			System.out.println("hll");
 			Member member = member(memberDto);
 			return memberRepo.save(member);
 		} else {
+			System.out.println("hii");
 			throw new MemberAlreadyExistException("Member MailId Already Exist");
 		}
 	}

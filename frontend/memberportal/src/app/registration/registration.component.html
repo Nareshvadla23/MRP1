@@ -40,9 +40,12 @@
                     <p><b>Date of Birth</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter Date of Birth" formControlName="dob" id="dob">
+                    <input type="date" max ="{{validDate | date :'yyyy-MM-dd'}}"placeholder="Enter Date of Birth" formControlName="dob" id="dob">
                     <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && Dob.touched">
                         *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Dob.errors?.['min'] && Dob.touched">
+                        *above 18 years
                     </div>
                 </div>
                 <div class="col-1">
@@ -77,7 +80,10 @@
                     <p><b>Country</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter Country" formControlName="country" id="country">
+                    <select type="text" placeholder="Enter Country" formControlName="country" id="country">
+                        <option value ="">Choose Country</option>
+                        <option>India</option>
+                    </select>
                     <div class="form-text text-danger" *ngIf="Country.errors?.['required'] && Country.touched">
                         *Required
                     </div>
@@ -90,7 +96,13 @@
                     <p><b>State</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter State" formControlName="state" id="name">
+                    <select type="text" placeholder="Enter State" formControlName="state" id="name">
+                        <option value ="">Choose State</option>
+                        <option>Karnataka</option>
+                        <option>Tamil Nadu</option>
+                        <option>Telangana</option>
+                        <option>Andhara Pradesh</option>
+                    </select>
                     <div class="form-text text-danger" *ngIf="State.errors?.['required'] && State.touched">
                         *Required
                     </div>
