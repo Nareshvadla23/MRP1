@@ -54,7 +54,7 @@ public class ClaimController {
 	@GetMapping("retrive/memberId/{memberId}")
 	public ResponseEntity<Member> getMemberByMemberId(@PathVariable @Valid String memberId)
 			throws MemberNotFoundException {
-		logger.info("getMemberByName method Acessed");
+		logger.info("getMemberByMemberID method Acessed");
 		Member member = claimService.getMemberByMemberId(memberId);
 		logger.info("Exited from getMemberByName method");
 		return new ResponseEntity<>(member, HttpStatus.OK);

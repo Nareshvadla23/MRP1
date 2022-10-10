@@ -5,24 +5,11 @@
         <div class="flex">
             <div class="row">
                 <div class="col-1">
-                    <p><b>Name</b></p>
-                </div>
-                <div class="col-5">
-                    <input type="text" placeholder="Enter Name" class="form-control" formControlName="name" id="name">
-                    <div class="form-text text-danger"
-                        *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
-                        *Required
-                    </div>
-                    <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
-                        *Name should be Alphabets
-                    </div>
-                </div>
-                <div class="col-1">
                     <p><b>MemberId</b></p>
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter Member ID" class="form-control" formControlName="memberId"
-                        id="memberId">
+                        id="memberId" (change)="getMember()">
                     <div class="form-text text-danger"
                         *ngIf="MemberId.errors?.['required'] && (MemberId.touched || MemberId.dirty)">
                         *Required
@@ -31,7 +18,26 @@
                         *ngIf="MemberId.errors?.['maxlength'] && (MemberId.touched || MemberId.dirty)">
                         *MemberId is too long
                     </div>
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['pattern'] && (MemberId.touched || MemberId.dirty)">
+                        *Member Id starts with 'R'
+                    </div>
                 </div>
+                <div class="col-1">
+                    <p><b>Name</b></p>
+                </div>
+                <div class="col-5">
+                    <input type="text" [readonly]="true" placeholder="Enter Name" class="form-control"
+                        formControlName="name" id="name">
+                    <div class="form-text text-danger"
+                        *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
+                        *Name should be Alphabets
+                    </div>
+                </div>
+
             </div>
         </div>
         <div class="flex">
@@ -40,8 +46,8 @@
                     <p><b>Date of Birth</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" placeholder="Enter Date of Birth" class="form-control" formControlName="dob"
-                        id="dob">
+                    <input type="date" [readonly]="true" placeholder="Enter Date of Birth" class="form-control"
+                        formControlName="dob" id="dob">
                     <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && (Dob.touched || Dob.dirty)">
                         *Required
                     </div>
@@ -51,10 +57,11 @@
                 </div>
                 <div class="col-5">
                     <input type="date" placeholder="Enter date of Admission" class="form-control"
-                        formControlName="dateofAdmission" id="dateofAdmission">
-                        <div class="form-text text-danger" *ngIf="DateofAdmission.errors?.['required'] && (DateofAdmission.touched || DateofAdmission.dirty)">
-                            *Required
-                        </div>
+                        formControlName="dateofAdmission" id="dateofAdmission" (change)="validDate()">
+                    <div class="form-text text-danger"
+                        *ngIf="DateofAdmission.errors?.['required'] && (DateofAdmission.touched || DateofAdmission.dirty)">
+                        *Required
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,11 +71,13 @@
                     <p><b>Date of Discharge</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date"  placeholder="Enter date of Discharge" class="form-control" formControlName="dateofDischarge"
+                    <input type="date" min="{{beforeDate | date :'yyyy-MM-dd'}}"
+                        placeholder="Enter date of Discharge" class="form-control" formControlName="dateofDischarge"
                         id="dateofDischarge">
-                        <div class="form-text text-danger" *ngIf="DateofDischarge.errors?.['required'] && (DateofDischarge.touched || DateofDischarge.dirty)">
-                            *Required
-                        </div>
+                    <div class="form-text text-danger"
+                        *ngIf="DateofDischarge.errors?.['required'] && (DateofDischarge.touched || DateofDischarge.dirty)">
+                        *Required
+                    </div>
                 </div>
                 <div class="col-1">
                     <p><b>Provider Name</b></p>
@@ -90,19 +99,23 @@
         <div class="flex">
             <div class="row">
                 <div class="col-1">
-                    <p><b>billAmount</b></p>
+                    <p><b>Bill Amount</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" placeholder="Enter State" class="form-control" formControlName="billAmount"
+                    <input type="text" placeholder="Enter Amount" class="form-control" formControlName="billAmount"
                         id="billAmount">
                     <div class="form-text text-danger"
                         *ngIf="BillAmount.errors?.['required'] && (BillAmount.touched || BillAmount.dirty)">
                         *Required
                     </div>
+                    <div class="form-text text-danger"
+                    *ngIf="BillAmount.errors?.['pattern'] && (BillAmount.touched || BillAmount.dirty)">
+                    *Amount should be in numbers
+                </div>
                 </div>
                 <div class="col-3">
-                    <button type="submit" [disabled]="claimForm.invalid"
-                        class='btn btn-outline-success'>Submit Claim</button>
+                    <button type="submit" [disabled]="claimForm.invalid" class='btn btn-outline-success'>Submit
+                        Claim</button>
                 </div>
 
             </div>

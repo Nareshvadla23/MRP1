@@ -39,7 +39,7 @@ class MemberServiceTest {
 		member.setPan("ASLSLDDK3A");
 		member.setState("telangana");
 		member.setMemberId("R-123");
-		return member;
+		return member; 
 	}
 
 	@Test
@@ -49,8 +49,7 @@ class MemberServiceTest {
 		MemberDto memberDto = memberDto();
 		when(memberRepo.findByEmailAddress(member.getEmailAddress())).thenReturn(null);
 		when(memberRepo.save(member)).thenReturn(member);
-		Member savedMember = service.addMember(memberDto);
-		assertEquals(member, savedMember); 
+		assertEquals(member, service.addMember(memberDto)); 
 	} 
 
 	@Test
@@ -65,13 +64,21 @@ class MemberServiceTest {
 	}
 
 	@Test
-	void testGetMemberByNamePassCondition() throws MemberNotFoundException {
+	void testGetMemberByName(){
 		Member member = member(); 
-
 		when(memberRepo.findByName(member.getName())).thenReturn(member);
 		Member response = service.getMemberByName(member.getName());
 		assertEquals(member, response);
 	}
+	
+	@Test
+	void testGetMemberByMemberId(){
+		Member member = member(); 
+		when(memberRepo.findByMemberId(member.getMemberId())).thenReturn(member);
+		Member response = service.getMemberByMemberId(member.getMemberId());
+		assertEquals(member, response);
+	}
+
 
 	@Test
 	void testUpdateMemberDetailsPassCondition() throws MemberNotFoundException {

@@ -75,9 +75,9 @@ class BillClaimServiceTest {
 		BillClaim billClaim = billClaim();
 		BillClaimDto billClaimDto = billClaimDto();
 		Member memberDto = member();
-		when(feign.getMemberByName(billClaim.getName())).thenReturn(memberDto);
+		when(feign.getMemberByMemberId(billClaimDto.getMemberId())).thenReturn(memberDto);
 		when(memberBillClaimRepo.save(billClaim)).thenReturn(billClaim);
-		when(memberBillClaimRepo.findByName("naresh")).thenReturn(null);
+		when(memberBillClaimRepo.findByName(billClaimDto.getName())).thenReturn(null);
 		BillClaim response = service.submitClaim(billClaimDto);
 		assertEquals("naresh", response.getName());
 	}
@@ -86,7 +86,7 @@ class BillClaimServiceTest {
 	void testSubmitClaimFailCondition() {
 		BillClaim billClaim = billClaim();
 		BillClaimDto billClaimDto = billClaimDto();
-		when(feign.getMemberByName(billClaim.getName())).thenReturn(null);
+		when(feign.getMemberByMemberId(billClaimDto.getMemberId())).thenReturn(null);
 		assertThrows(MemberNotFoundException.class, () -> service.submitClaim(billClaimDto),
 				"This method throws exception");
 	}
@@ -96,7 +96,7 @@ class BillClaimServiceTest {
 		BillClaim billClaim = billClaim();
 		BillClaimDto billClaimDto = billClaimDto();
 		Member memberDto = member();
-		when(feign.getMemberByName(billClaim.getName())).thenReturn(memberDto);
+		when(feign.getMemberByMemberId(billClaimDto.getMemberId())).thenReturn(memberDto);
 		when(memberBillClaimRepo.findByName("naresh")).thenReturn(billClaim);
 		assertThrows(BillAlreadyClaimmedException.class, () -> service.submitClaim(billClaimDto),
 				"This method throws exception");
@@ -113,6 +113,21 @@ class BillClaimServiceTest {
 	void testGetMemberByNameFailCondition() {
 		when(feign.getMemberByName("naresh")).thenReturn(null);
 		assertThrows(MemberNotFoundException.class, () -> service.getMemberByName("naresh"),
+				"This method throws exception");
+	}
+	
+	@Test
+	void testGetMemberByMemberIdPassCondition() throws MemberNotFoundException {
+		Member member = member();
+		when(feign.getMemberByMemberId(member.getMemberId())).thenReturn(member);
+		assertEquals(member, service.getMemberByMemberId(member.getMemberId()));
+	}
+
+	@Test
+	void testGetMemberByMemberIdFailCondition() {
+		Member member = member();
+		when(feign.getMemberByMemberId(member.getMemberId())).thenReturn(null);
+		assertThrows(MemberNotFoundException.class, () -> service.getMemberByMemberId(member.getMemberId()),
 				"This method throws exception");
 	}
 

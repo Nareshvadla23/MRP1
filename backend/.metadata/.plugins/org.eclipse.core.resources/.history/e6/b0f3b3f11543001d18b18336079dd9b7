@@ -1,5 +1,0 @@
-package com.member.billclaim.advice;
-
-public class BillAlreadyClaimmedException extends Exception {
-
-}

@@ -26,7 +26,7 @@ export class MemberService {
   }
 
   getMemberById(memberId:any) {
-    return this.http.get(URL1 +"member/retrive/memberId/"+memberId)
+    return this.http.get(URL +"member/retrive/memberId/"+memberId)
   }
 
 }

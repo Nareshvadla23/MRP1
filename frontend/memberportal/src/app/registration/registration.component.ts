@@ -26,8 +26,8 @@ export class RegistrationComponent implements OnInit {
     state: new FormControl("", [Validators.required]),
     country: new FormControl("", [Validators.required]),
     emailAddress: new FormControl("", [Validators.required, Validators.email]),
-    pan: new FormControl("", [Validators.required, Validators.minLength(12), Validators.maxLength(12)]),
-    contactNo: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*")]),
+    pan: new FormControl("", [Validators.required,Validators.pattern("[a-zA-Z0-9]*$"), Validators.minLength(12), Validators.maxLength(12),]),
+    contactNo: new FormControl("", [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern("[0-9]*$")]),
     dob: new FormControl("", [Validators.required,]),
   })
 

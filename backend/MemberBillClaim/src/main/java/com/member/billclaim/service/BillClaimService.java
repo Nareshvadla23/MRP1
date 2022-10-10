@@ -41,12 +41,12 @@ public class BillClaimService {
 	}
 
 	public Member getMemberByMemberId(String memberId) throws MemberNotFoundException {
-		logger.info("GetMemberByName method Acessed");
+		logger.info("GetMemberByMemberId method Acessed");
 		Member member = feign.getMemberByMemberId(memberId);
 		if (member != null) {
 			return member;
 		} else {
-			throw new MemberNotFoundException("Member details not found with Name :" + memberId);
+			throw new MemberNotFoundException("Member details not found with MemberId :" + memberId);
 		}
 	}
 
@@ -58,19 +58,19 @@ public class BillClaimService {
 			if (billClaimResponse == null) {
 				BillClaim billClaim = billClaim(claim);
 				return memberBillClaimRepo.save(billClaim);
-			} else {
+			} else { 
 				throw new BillAlreadyClaimmedException(
 						"Member Already Calimed There Bills with claimId:" + billClaimResponse.getId());
 			}
 		} else {
-			throw new MemberNotFoundException("Member details not found with Name :" + claim.getName());
+			throw new MemberNotFoundException("Member details not found with Member ID :" + claim.getMemberId());
 		}
 	}
 
 	public static BillClaim billClaim(BillClaimDto bilClaimDto) {
 		BillClaim billClaim = new BillClaim();
 
-		Integer value = (int) (random.nextInt(2000000000) + 1000000000);
+		Integer value = (int) (random.nextInt(2000000000) + 1000000000); 
 		billClaim.setId(Math.abs(value));
 		billClaim.setDob(bilClaimDto.getDob());
 		billClaim.setName(bilClaimDto.getName());

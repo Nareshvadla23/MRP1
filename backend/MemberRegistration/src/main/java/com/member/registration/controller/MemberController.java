@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -48,7 +47,7 @@ public class MemberController {
 	}
 
 	@GetMapping("retrive/name/{name}")
-	public Member getMemberByName(@PathVariable String name) throws MemberNotFoundException {
+	public Member getMemberByName(@PathVariable String name) {
 		logger.info("getMemberByName method Acessed");
 		Member member = memberService.getMemberByName(name);
 		logger.info("Exited from getMemberByName method");
@@ -56,8 +55,8 @@ public class MemberController {
 	}
 
 	@GetMapping("retrive/memberId/{memberId}")
-	public Member getMemberByMemberId(@PathVariable String memberId) throws MemberNotFoundException {
-		logger.info("getMemberByName method Acessed");
+	public Member getMemberByMemberId(@PathVariable String memberId) {
+		logger.info("getMemberByMemberId method Acessed");
 		Member member = memberService.getMemberByMemberId(memberId);
 		logger.info("Exited from getMemberByName method");
 		return member;

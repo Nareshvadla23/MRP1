@@ -2,8 +2,10 @@
 
 /* Add padding to containers */
 .container {
-  padding: 16px;
+  padding: 20px;
   align-items: center;
+  background-color: #f2f2f2;
+  border-radius: 5px;
 }
 
 /* Full-width input fields */
@@ -12,8 +14,10 @@ input[type=text], select[type=text],input[type=date] {
   padding: 8px;
   margin: 5px 0 22px 0;
   display: inline-block;
-  border: none;
-  background: #f1f1f1;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+ 
 }
 
 div

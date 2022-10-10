@@ -53,14 +53,17 @@
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter Pan Number" formControlName="pan" id="name">
-                    <div class="form-text text-danger" *ngIf="Pan.errors?.['required'] && Pan.touched">
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['required'] &&(Pan.touched||Pan.dirty)">
                         *Required
                     </div>
-                    <div class="form-text text-danger" *ngIf="Pan.errors?.['minlength'] && Pan.touched">
-                        *Pan number is too short
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['minlength'] && (Pan.touched||Pan.dirty)">
+                        *PAN must be 12 digits
                     </div>
-                    <div class="form-text text-danger" *ngIf="Pan.errors?.['maxlength'] && Pan.touched">
-                        *Pan number is too Long
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['maxlength'] && (Pan.touched||Pan.dirty)">
+                        *PAN must be 12 digits
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['pattern'] && (Pan.touched||Pan.dirty)">
+                        *PAN number should not contain any type special characters
                     </div>
                 </div>
             </div>
@@ -112,16 +115,16 @@
                 </div>
                 <div class="col-5">
                     <input type="text" placeholder="Enter Contact Number" formControlName="contactNo" id="name">
-                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['required'] && ContactNo.touched">
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['required'] && (ContactNo.touched||ContactNo.dirty)">
                         *Required
                     </div>
-                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['minlength'] && ContactNo.touched">
-                        *Number is too short
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['minlength'] && (ContactNo.touched||ContactNo.dirty)">
+                        *Number must be 10 digits
                     </div>
-                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['maxlength'] && ContactNo.touched">
-                        *Number is too long
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['maxlength'] && (ContactNo.touched||ContactNo.dirty)">
+                        *Number must be 10 digits
                     </div>
-                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['pattern'] && ContactNo.touched">
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['pattern'] &&(ContactNo.touched||ContactNo.dirty)">
                         *Number is Invalid
                     </div>
                 </div>

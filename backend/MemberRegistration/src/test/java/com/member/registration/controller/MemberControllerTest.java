@@ -11,7 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.http.ResponseEntity;
 
 import com.member.registration.advice.MemberAlreadyExistException;
 import com.member.registration.advice.MemberNotFoundException;
@@ -38,17 +37,17 @@ class MemberControllerTest {
 	}
 
 	@Test
-	void testGetMemberByName() throws MemberNotFoundException {
+	void testGetMemberByName() {
 		Member member = member();
 		when(service.getMemberByName(member.getName())).thenReturn(member);
-		Member response = controller.getMemberByName(member.getName());
+		Member response = controller.getMemberByName(member.getName()); 
 		assertEquals(member, response);
 	}
 	
 	@Test
-	void testGetMemberByMemberId() throws MemberNotFoundException {
+	void testGetMemberByMemberId() {
 		Member member = member();
-		when(service.getMemberByName(member.getMemberId())).thenReturn(member);
+		when(service.getMemberByMemberId(member.getMemberId())).thenReturn(member);
 		Member response = controller.getMemberByMemberId(member.getMemberId());
 		assertEquals(member.getCountry(), response.getCountry());
 	}
