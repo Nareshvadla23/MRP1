@@ -84,6 +84,7 @@ class BillClaimServiceTest {
 
 	@Test
 	void testSubmitClaimFailCondition() {
+		BillClaim billClaim = billClaim();
 		BillClaimDto billClaimDto = billClaimDto();
 		when(feign.getMemberByMemberId(billClaimDto.getMemberId())).thenReturn(null);
 		assertThrows(MemberNotFoundException.class, () -> service.submitClaim(billClaimDto),

@@ -5,6 +5,7 @@ import { Member } from './member';
 
 const URL = "http://localhost:8090/"
 const URL1 = "http://localhost:8084/"
+const URL3 ="https://zkiwdg2nu9.execute-api.us-west-2.amazonaws.com/prod/"
 
 @Injectable({
   providedIn: 'root'
@@ -14,19 +15,19 @@ export class MemberService {
   constructor(public http: HttpClient) { }
 
   registerMember(member: any): Observable<object> {
-    return this.http.post(URL1 + "member/register", member);
+    return this.http.post(URL3, member);
   }
 
   billClaim(claim: any): Observable<object> {
-    return this.http.post(URL + "member/claim", claim);
+    return this.http.post(URL3 , claim);
   }
 
   updateMember(member: any): Observable<object> {
-    return this.http.put(URL1 + "member/update", member);
+    return this.http.put(URL3 , member);
   }
 
   getMemberById(memberId:any) {
-    return this.http.get(URL +"member/retrive/memberId/"+memberId)
+    return this.http.get(URL3 +memberId)
   }
 
 }
