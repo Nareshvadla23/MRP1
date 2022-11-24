@@ -71,15 +71,6 @@
         <div class="flex">
             <div class="row">
                 <div class="col-1">
-                    <p><b>Address</b></p>
-                </div>
-                <div class="col-5">
-                    <input type="text" placeholder="Enter Address" formControlName="address" id="address">
-                    <div class="form-text text-danger" *ngIf="Address.errors?.['required'] && Address.touched">
-                        *Required
-                    </div>
-                </div>
-                <div class="col-1">
                     <p><b>Country</b></p>
                 </div>
                 <div class="col-5">
@@ -91,10 +82,6 @@
                         *Required
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="flex">
-            <div class="row">
                 <div class="col-1">
                     <p><b>State</b></p>
                 </div>
@@ -107,6 +94,19 @@
                         <option>Andhara Pradesh</option>
                     </select>
                     <div class="form-text text-danger" *ngIf="State.errors?.['required'] && State.touched">
+                        *Required
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex">
+            <div class="row">
+                <div class="col-1">
+                    <p><b>Address</b></p>
+                </div>
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Address" formControlName="address" id="address">
+                    <div class="form-text text-danger" *ngIf="Address.errors?.['required'] && Address.touched">
                         *Required
                     </div>
                 </div>
@@ -134,7 +134,7 @@
             <div class="row">
                 <div class="col-12">
                     <button type="submit" [disabled]="registerForm.invalid"
-                        class='btn btn-outline-success'>Register</button>
+                        class='btn btn-outline-dark'>Register</button>
                 </div>
             </div>
         </div>

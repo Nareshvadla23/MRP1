@@ -34,6 +34,7 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
+	// for registering the member details
 	@PostMapping("/register")
 	@ResponseStatus(HttpStatus.OK)
 	public Map<String, String> saveMember(@RequestBody @Valid MemberDto memberDto) throws MemberAlreadyExistException {
@@ -46,6 +47,7 @@ public class MemberController {
 		return response;
 	}
 
+	// for retrieving member details by memberName
 	@GetMapping("retrive/name/{name}")
 	public Member getMemberByName(@PathVariable String name) {
 		logger.info("getMemberByName method Acessed");
@@ -54,6 +56,7 @@ public class MemberController {
 		return member;
 	}
 
+	// for retrieving member details by memberId
 	@GetMapping("retrive/memberId/{memberId}")
 	public Member getMemberByMemberId(@PathVariable String memberId) {
 		logger.info("getMemberByMemberId method Acessed");
@@ -62,6 +65,7 @@ public class MemberController {
 		return member;
 	}
 
+	// for updating the member details
 	@PutMapping("/update")
 	@ResponseStatus(HttpStatus.OK)
 	public Map<String, String> updateMember(@RequestBody @Valid MemberDto memberDto) throws MemberNotFoundException {

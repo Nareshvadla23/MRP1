@@ -43,6 +43,7 @@ public class ClaimController {
 
 	Logger logger = org.slf4j.LoggerFactory.getLogger(ClaimController.class);
 
+	// for retrieving member details by memberName
 	@GetMapping("retrive/name/{name}")
 	public ResponseEntity<Member> getMemberByName(@PathVariable @Valid String name) throws MemberNotFoundException {
 		logger.info("getMemberByName method Acessed");
@@ -51,6 +52,7 @@ public class ClaimController {
 		return new ResponseEntity<>(member, HttpStatus.OK);
 	}
 
+	// for retrieving member details by memberId
 	@GetMapping("retrive/memberId/{memberId}")
 	public ResponseEntity<Member> getMemberByMemberId(@PathVariable @Valid String memberId)
 			throws MemberNotFoundException {
@@ -60,6 +62,7 @@ public class ClaimController {
 		return new ResponseEntity<>(member, HttpStatus.OK);
 	}
 
+	// for bill claiming
 	@PostMapping("/claim")
 	@ResponseStatus(HttpStatus.OK)
 	public Map<String, String> billClaim(@RequestBody @Valid BillClaimDto claim)

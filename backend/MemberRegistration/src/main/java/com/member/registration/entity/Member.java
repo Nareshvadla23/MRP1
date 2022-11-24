@@ -18,15 +18,13 @@ import lombok.Setter;
 @Getter
 @Entity
 public class Member {
-	
-
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String memberId;
 	@NotNull(message = "Name should not be null")
 	private String name;
-	@NotNull(message ="Address should not be null")
+	@NotNull(message = "Address should not be null")
 	private String address;
 	@NotEmpty(message = "State should not be empty")
 	private String state;
@@ -41,6 +39,4 @@ public class Member {
 	private Long contactNo;
 	@NotNull(message = "DOB should not be empty")
 	private LocalDate dob;
-	
-	
 }

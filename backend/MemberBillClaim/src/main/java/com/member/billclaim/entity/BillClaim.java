@@ -12,7 +12,6 @@ import lombok.Setter;
 @Setter
 @Entity
 public class BillClaim {
-
 	@Id
 	private Integer id;
 	private String name;
@@ -21,6 +20,4 @@ public class BillClaim {
 	private LocalDate dateofDischarge;
 	private String providerName;
 	private Long billAmount;
-	
-
 }

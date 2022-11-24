@@ -35,3 +35,5 @@ Isrc/main/java/com/member/registration/advice/MemberNotFoundException.java,0\5\
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 8
 mvnw.cmd,1\f\1f1763f358c257ea3515417352b82b0165647ad1
+^
+.src/main/resources/application-prod.properties,7\4\743ae0da3644f9e4fd27196da617deafee63f397

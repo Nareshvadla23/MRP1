@@ -8,7 +8,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class MemberDto {
-
 	private String memberId;
 	private String name;
 	private String address;
@@ -18,6 +17,4 @@ public class MemberDto {
 	private String pan;
 	private Long contactNo;
 	private LocalDate dob;
-
 }
- 

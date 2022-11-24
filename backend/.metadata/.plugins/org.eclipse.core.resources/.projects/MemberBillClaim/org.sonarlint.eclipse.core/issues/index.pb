@@ -39,3 +39,5 @@ Fsrc/test/java/com/member/billclaim/controller/ClaimControllerTest.java,f\0\f0e
 HELP.md,1\a\1a273f73b7a477b0745593641bd708a6182c7ad5
 e
 5src/main/java/com/member/billclaim/entity/Member.java,6\f\6ff3557f84a04098a2f766a7d318012691322c2b
+^
+.src/main/resources/application-prod.properties,7\4\743ae0da3644f9e4fd27196da617deafee63f397

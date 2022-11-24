@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class UpdationComponent implements OnInit {
   registerForm = new FormGroup({
-    memberId:new FormControl(),
+    memberId:new FormControl("",[Validators.required, Validators.maxLength(5), Validators.pattern("[R].*")]),
     name: new FormControl("", [Validators.required, Validators.pattern("[a-zA-Z].*")]),
     address: new FormControl("", [Validators.required]),
     state: new FormControl("", [Validators.required]),
@@ -89,6 +89,9 @@ export class UpdationComponent implements OnInit {
   }
   get Dob(): FormControl {
     return this.registerForm.get("dob") as FormControl;
+  }
+  get MemberId(): FormControl {
+    return this.registerForm.get("memberId") as FormControl;
   }
 
 }

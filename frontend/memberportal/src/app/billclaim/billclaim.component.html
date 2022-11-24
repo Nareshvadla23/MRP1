@@ -27,7 +27,7 @@
                     <p><b>Name</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="text" [readonly]="true" placeholder="Enter Name" class="form-control"
+                    <input type="text" Disabled placeholder="Enter Name" class="form-control"
                         formControlName="name" id="name">
                     <div class="form-text text-danger"
                         *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
@@ -46,7 +46,7 @@
                     <p><b>Date of Birth</b></p>
                 </div>
                 <div class="col-5">
-                    <input type="date" [readonly]="true" placeholder="Enter Date of Birth" class="form-control"
+                    <input type="date" Disabled placeholder="Enter Date of Birth" class="form-control"
                         formControlName="dob" id="dob">
                     <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && (Dob.touched || Dob.dirty)">
                         *Required

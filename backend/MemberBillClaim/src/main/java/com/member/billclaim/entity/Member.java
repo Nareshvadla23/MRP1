@@ -16,8 +16,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class Member {
-	
-
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -39,10 +37,4 @@ public class Member {
 	private Long contactNo;
 	@NotNull(message = "DOB should not be empty")
 	private LocalDate dob;
-	
-	
-	
-	
-	
-
 }

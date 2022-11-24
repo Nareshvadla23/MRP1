@@ -39,7 +39,6 @@ export class RegistrationComponent implements OnInit {
 
   registerMember() {
     console.log(this.registerForm.get);
-
     this.memberService.registerMember(this.registerForm.getRawValue()).subscribe(
       (data:any) => {
         alert(data.message)
@@ -47,7 +46,6 @@ export class RegistrationComponent implements OnInit {
       }, (error:any) => {
         alert(error.error.errorMessage)
       }
-
     )
   }
 

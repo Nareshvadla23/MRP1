@@ -1,141 +1,155 @@
 <form [formGroup]="registerForm" (ngSubmit)="updateMember()">
-  <div class="container">
-      <h2>UPDATE</h2>
-      <p>Please fill in this form to update your required Details.</p>
-      <div class="flex">
-        <div class="row">
-            <div class="col-1">
-                <p><b>Member Id</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text"  placeholder="Enter MemberId"class="form-control" formControlName="memberId" id="memberId">
-            </div>
-            <div class="col-3">
-                <button (click)='getMember()' class='btn btn-outline-success'>Get Member</button>
-            </div>
-            
-        </div>
-    </div>
-    <div class="flex">
-        <div class="row">
-            <div class="col-1">
-                <p><b>Name</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" [readonly]="true" placeholder="Enter Name" class="form-control" formControlName="name" id="name">
-                <div class="form-text text-danger"
-                    *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
-                    *Required
+    <div class="container">
+        <h2>UPDATE</h2>
+        <p>Please fill in this form to update your required Details.</p>
+        <div class="flex">
+            <div class="row">
+                <div class="col-1">
+                    <p><b>Member Id</b></p>
                 </div>
-                <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
-                    *Name should be Alphabets
+                <div class="col-5">
+                    <input type="text" placeholder="Enter MemberId" class="form-control" formControlName="memberId"
+                        id="memberId" (change)='getMember()'>
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['required'] && (MemberId.touched || MemberId.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['maxlength'] && (MemberId.touched || MemberId.dirty)">
+                        *MemberId is too long
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="MemberId.errors?.['pattern'] && (MemberId.touched || MemberId.dirty)">
+                        *Member Id starts with 'R'
+                    </div>
                 </div>
-            </div>
-            <div class="col-1">
-                <p><b>MailAddress</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter Mail Address" name="emailAddress"
-                    formControlName="emailAddress" id="emailAddress">
-                <div class="form-text text-danger"
-                    *ngIf="EmailAddress.errors?.['required'] && (EmailAddress.touched||EmailAddress.dirty)">
-                    *Required
+                <div class="col-1">
+                    <p><b>Name</b></p>
                 </div>
-                <div class="form-text text-danger"
-                    *ngIf="EmailAddress.errors?.['email'] && (EmailAddress.touched||EmailAddress.dirty)">
-                    *Email is Invalid
+                <div class="col-5">
+                    <input type="text" Disabled placeholder="Enter Name" class="form-control"
+                        formControlName="name" id="name">
+                    <div class="form-text text-danger"
+                        *ngIf="Name.errors?.['required'] && (Name.touched || Name.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Name.errors?.['pattern'] && (Name.touched || Name.dirty)">
+                        *Name should be Alphabets
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex">
-        <div class="row">
-            <div class="col-1">
-                <p><b>Date of Birth</b></p>
-            </div>
-            <div class="col-5">
-                <input type="date" placeholder="Enter Date of Birth" [readonly]="true" formControlName="dob" id="dob">
-                <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && Dob.touched">
-                    *Required
+        <div class="flex">
+            <div class="row">
+                <div class="col-1">
+                    <p><b>MailAddress</b></p>
                 </div>
-            </div>
-            <div class="col-1">
-                <p><b>Pan No</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter Pan Number" formControlName="pan" id="name">
-                <div class="form-text text-danger" *ngIf="Pan.errors?.['required'] && Pan.touched">
-                    *Required
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Mail Address" name="emailAddress"
+                        formControlName="emailAddress" id="emailAddress">
+                    <div class="form-text text-danger"
+                        *ngIf="EmailAddress.errors?.['required'] && (EmailAddress.touched||EmailAddress.dirty)">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger"
+                        *ngIf="EmailAddress.errors?.['email'] && (EmailAddress.touched||EmailAddress.dirty)">
+                        *Email is Invalid
+                    </div>
                 </div>
-                <div class="form-text text-danger" *ngIf="Pan.errors?.['minlength'] && Pan.touched">
-                    *Pan number is too short
+                <div class="col-1">
+                    <p><b>Date of Birth</b></p>
                 </div>
-                <div class="form-text text-danger" *ngIf="Pan.errors?.['maxlength'] && Pan.touched">
-                    *Pan number is too Long
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="flex">
-        <div class="row">
-            <div class="col-1">
-                <p><b>Address</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter Address" formControlName="address" id="address">
-                <div class="form-text text-danger" *ngIf="Address.errors?.['required'] && Address.touched">
-                    *Required
-                </div>
-            </div>
-            <div class="col-1">
-                <p><b>Country</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter Country" [readonly]="true" formControlName="country" id="country">
-                <div class="form-text text-danger" *ngIf="Country.errors?.['required'] && Country.touched">
-                    *Required
+                <div class="col-5">
+                    <input type="date" placeholder="Enter Date of Birth" Disabled formControlName="dob"
+                        id="dob">
+                    <div class="form-text text-danger" *ngIf="Dob.errors?.['required'] && Dob.touched">
+                        *Required
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex">
-        <div class="row">
-            <div class="col-1">
-                <p><b>State</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter State" formControlName="state" id="name">
-                <div class="form-text text-danger" *ngIf="State.errors?.['required'] && State.touched">
-                    *Required
+        <div class="flex">
+            <div class="row">
+
+                <div class="col-1">
+                    <p><b>Pan No</b></p>
                 </div>
-            </div>
-            <div class="col-1">
-                <p><b>Contact No</b></p>
-            </div>
-            <div class="col-5">
-                <input type="text" placeholder="Enter Contact Number" formControlName="contactNo" id="name">
-                <div class="form-text text-danger" *ngIf="ContactNo.errors?.['required'] && ContactNo.touched">
-                    *Required
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Pan Number" formControlName="pan" id="name">
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['required'] && Pan.touched">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['minlength'] && Pan.touched">
+                        *Pan number is too short
+                    </div>
+                    <div class="form-text text-danger" *ngIf="Pan.errors?.['maxlength'] && Pan.touched">
+                        *Pan number is too Long
+                    </div>
                 </div>
-                <div class="form-text text-danger" *ngIf="ContactNo.errors?.['minlength'] && ContactNo.touched">
-                    *Number is too short
+                <div class="col-1">
+                    <p><b>Country</b></p>
                 </div>
-                <div class="form-text text-danger" *ngIf="ContactNo.errors?.['maxlength'] && ContactNo.touched">
-                    *Number is too long
-                </div>
-                <div class="form-text text-danger" *ngIf="ContactNo.errors?.['pattern'] && ContactNo.touched">
-                    *Number is Invalid
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Country" Disabled formControlName="country"
+                        id="country">
+                    <div class="form-text text-danger" *ngIf="Country.errors?.['required'] && Country.touched">
+                        *Required
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="flex">
-        <div class="row">
-            <div class="col-12">
-                <button type="submit" [disabled]="registerForm.invalid"
-                    class='btn btn-outline-success'>Update</button>
+        <div class="flex">
+            <div class="row">
+                <div class="col-1">
+                    <p><b>State</b></p>
+                </div>
+                <div class="col-5">
+                    <input type="text" placeholder="Enter State" formControlName="state" id="name">
+                    <div class="form-text text-danger" *ngIf="State.errors?.['required'] && State.touched">
+                        *Required
+                    </div>
+                </div>
+                <div class="col-1">
+                    <p><b>Address</b></p>
+                </div>
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Address" formControlName="address" id="address">
+                    <div class="form-text text-danger" *ngIf="Address.errors?.['required'] && Address.touched">
+                        *Required
+                    </div>
+                </div>
+
             </div>
-      </div>
-  </div>
-</div>
+        </div>
+        <div class="flex">
+            <div class="row">
+                <div class="col-1">
+                    <p><b>Contact No</b></p>
+                </div>
+                <div class="col-5">
+                    <input type="text" placeholder="Enter Contact Number" formControlName="contactNo" id="name">
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['required'] && ContactNo.touched">
+                        *Required
+                    </div>
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['minlength'] && ContactNo.touched">
+                        *Number is too short
+                    </div>
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['maxlength'] && ContactNo.touched">
+                        *Number is too long
+                    </div>
+                    <div class="form-text text-danger" *ngIf="ContactNo.errors?.['pattern'] && ContactNo.touched">
+                        *Number is Invalid
+                    </div>
+                </div>
+                <div class="col-5">
+                    <button type="submit" [disabled]="registerForm.invalid"
+                        class='btn btn-outline-success'>Update</button>
+                </div>
+
+            </div>
+        </div>
+        <div class="flex">
+
+        </div>
+    </div>
 </form>

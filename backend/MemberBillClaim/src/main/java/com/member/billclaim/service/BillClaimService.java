@@ -47,7 +47,7 @@ public class BillClaimService {
 			return member;
 		} else {
 			throw new MemberNotFoundException("Member details not found with MemberId :" + memberId);
-		}
+		} 
 	}
 
 	public BillClaim submitClaim(BillClaimDto claim) throws MemberNotFoundException, BillAlreadyClaimmedException {
@@ -58,7 +58,7 @@ public class BillClaimService {
 			if (billClaimResponse == null) {
 				BillClaim billClaim = billClaim(claim);
 				return memberBillClaimRepo.save(billClaim);
-			} else { 
+			} else {
 				throw new BillAlreadyClaimmedException(
 						"Member Already Calimed There Bills with claimId:" + billClaimResponse.getId());
 			}
@@ -70,7 +70,7 @@ public class BillClaimService {
 	public static BillClaim billClaim(BillClaimDto bilClaimDto) {
 		BillClaim billClaim = new BillClaim();
 
-		Integer value = (int) (random.nextInt(2000000000) + 1000000000); 
+		Integer value = (int) (random.nextInt(2000000000) + 1000000000);
 		billClaim.setId(Math.abs(value));
 		billClaim.setDob(bilClaimDto.getDob());
 		billClaim.setName(bilClaimDto.getName());
@@ -79,6 +79,5 @@ public class BillClaimService {
 		billClaim.setBillAmount(bilClaimDto.getBillAmount());
 		billClaim.setProviderName(bilClaimDto.getProviderName());
 		return billClaim;
-
 	}
 }

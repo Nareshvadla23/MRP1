@@ -16,9 +16,4 @@ public interface FeignService {
 	
 	@GetMapping("member/retrive/memberId/{memberId}")
 	public Member getMemberByMemberId(@PathVariable String memberId);
-	
-	
-
-	
-
 }

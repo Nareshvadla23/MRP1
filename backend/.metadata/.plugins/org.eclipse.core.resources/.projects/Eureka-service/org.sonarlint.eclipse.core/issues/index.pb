@@ -5,3 +5,5 @@ m
 =src/main/java/com/member/eureka/EurekaServiceApplication.java,a\2\a255c2403f15053d88c40ab5432e484fcc185e59
 Y
 )src/main/resources/application.properties,0\6\06f65155ec73600b9fc5c4dc2883d4bb84d8e284
+^
+.src/main/resources/application-prod.properties,7\4\743ae0da3644f9e4fd27196da617deafee63f397

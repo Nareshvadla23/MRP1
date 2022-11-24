@@ -17,7 +17,7 @@ class ExceptionHandlerControllerTest {
 
 	@Test
 	void testHandlingException() { 
-
+ 
 	}
 
 	@Test

@@ -32,11 +32,10 @@ public class MemberService {
 		member.setContactNo(memberDto.getContactNo());
 		member.setDob(memberDto.getDob());
 		member.setEmailAddress(memberDto.getEmailAddress());
-		member.setName(memberDto.getName()); 
+		member.setName(memberDto.getName());
 		member.setPan(memberDto.getPan());
 		member.setState(memberDto.getState());
 		return member;
-
 	}
 
 	public Member addMember(MemberDto memberDto) throws MemberAlreadyExistException {
@@ -53,7 +52,6 @@ public class MemberService {
 	public Member getMemberByName(String name) {
 		logger.info("GetMemberByName method Acessed");
 		return memberRepo.findByName(name);
-
 	}
 
 	public Member getMemberByMemberId(String memberId) {
