@@ -41,3 +41,5 @@ e
 5src/main/java/com/member/billclaim/entity/Member.java,6\f\6ff3557f84a04098a2f766a7d318012691322c2b
 ^
 .src/main/resources/application-prod.properties,7\4\743ae0da3644f9e4fd27196da617deafee63f397
+n
+>src/main/java/com/member/billclaim/service/commonservices.java,1\4\140d7e14dabc42af42f7b10db629fa9c755bd297

@@ -61,6 +61,7 @@ public class MemberController {
 	public Member getMemberByMemberId(@PathVariable String memberId) {
 		logger.info("getMemberByMemberId method Acessed");
 		Member member = memberService.getMemberByMemberId(memberId);
+		System.out.println(member);
 		logger.info("Exited from getMemberByName method");
 		return member;
 	}

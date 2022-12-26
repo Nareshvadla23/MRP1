@@ -15,6 +15,8 @@ import com.member.billclaim.entity.BillClaim;
 import com.member.billclaim.entity.Member;
 import com.member.billclaim.util.FeignService;
 
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+
 @Service
 public class BillClaimService {
 
@@ -26,6 +28,9 @@ public class BillClaimService {
 
 	@Autowired
 	FeignService feign;
+	
+	@Autowired
+	commonservices service;
 
 	Logger logger = org.slf4j.LoggerFactory.getLogger(BillClaimService.class);
 	static Random random = new Random(System.currentTimeMillis());
@@ -40,9 +45,10 @@ public class BillClaimService {
 		}
 	}
 
+	
 	public Member getMemberByMemberId(String memberId) throws MemberNotFoundException {
 		logger.info("GetMemberByMemberId method Acessed");
-		Member member = feign.getMemberByMemberId(memberId);
+		Member member = service.getMemberByMemberId(memberId);
 		if (member != null) {
 			return member;
 		} else {
